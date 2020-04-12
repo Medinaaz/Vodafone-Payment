@@ -25,6 +25,8 @@ ROOT_URLCONF = 'marketplace.urls'
 AUTH_USER_MODEL = 'user.User'
 APPEND_SLASH = True
 
+SESSION_COOKIE_AGE = 2419200  # 4 weeks
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
