@@ -1,9 +1,11 @@
 test:
   image: python:3.8
-  variables:
-    POSTGRES_DB: ci
   services:
     - postgres:latest
+  variables:
+    POSTGRES_DB: ci
+    POSTGRES_USER: postgres
+    POSTGRES_PASSWORD: postgres
   cache:
     paths:
       - ~/.cache/pip/
