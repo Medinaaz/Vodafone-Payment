@@ -63,7 +63,7 @@ class Product(models.Model):
 
 
 class ProductImages(models.Model):
-    """Image library for the products."""
+    """Image library for the product."""
     title = models.CharField(_("Title"), max_length=255, blank=False, null=False)
     slug = models.SlugField(_("Slug"), max_length=50, unique=True)
     product = models.ForeignKey(
