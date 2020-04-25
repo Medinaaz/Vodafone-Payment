@@ -1,9 +1,57 @@
-<html>
-{% load i18n static %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>{% block title %}{% endblock %} | {% trans "Marketplace" %}</title>
+    <title>{% block title %}Marketplace{% endblock %}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <link rel="stylesheet" href="{% static "bootstrap/css/bootstrap.min.css" %}">
+    <link rel="stylesheet" href="{% static "css/styles.min.css" %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
+
 <body>
-    {% block content %}{% endblock %}
+<!-- navigation bar starts -->
+<nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar" style="position:relative">
+    <div class="container"><a class="navbar-brand logo" href="/">Marketplace</a>
+        <div id="navcol-1" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'basket' %}">Basket</a>
+                </li>
+            </ul>
+            <i class="fa fa-shopping-cart" style="font-size: 25px;"></i>
+        </div>
+    </div>
+</nav>
+<!-- navigation bar ends -->
+
+{% block content %}{% endblock %}
+
+<!-- footer starts -->
+<footer class="page-footer dark" style="font-size: 16px;">
+    <div class="container">
+        <div class="row" style="margin-top: 5px;padding-top: 0px;">
+            <div class="col-sm-3">
+                <h5 class="text-center" style="font-size: 12px;">Site Map</h5>
+            </div>
+            <div class="col-sm-3">
+                <h5 class="text-center" style="font-size: 12px;">Legal Terms</h5>
+            </div>
+            <div class="col-sm-3 text-center">
+                <h5 style="font-size: 12px;">Privacy and Cookies</h5>
+            </div>
+            <div class="col-sm-3">
+                <h5 class="text-center" style="font-size: 12px;">Contact Us</h5>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <p style="font-size: 12px;">© 2020 Copyright</p>
+    </div>
+</footer>
+<!-- footer ends -->
 </body>
 </html>
