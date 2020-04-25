@@ -2,6 +2,11 @@ from django.contrib import admin
 from product.models import ProductCategory, Product, ProductImages
 
 
+class InlineProductImagesAdmin(admin.TabularInline):
+    model = ProductImages
+    prepopulated_fields = {"slug": ("title",)}
+
+
 @admin.register(ProductCategory)
 class ProductCategoryAdmin(admin.ModelAdmin):
     list_display = ('name', 'template_icon', 'modified_at')
@@ -12,6 +17,7 @@ class ProductCategoryAdmin(admin.ModelAdmin):
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
+    inlines = [InlineProductImagesAdmin]
     list_display = ('name', 'category', 'price', 'available_quantity', 'barcode', 'status', 'modified_at')
     list_filter = ('category', 'status', 'modified_at')
     search_fields = ('name', 'barcode')
