@@ -1,9 +1,6 @@
 from django.views.generic import TemplateView
 
-from .models import (
-    Basket,
-    BasketItem,
-)
+from basket.models import Basket, BasketItem
 
 
 class BasketDetailView(TemplateView):
@@ -30,7 +27,9 @@ class BasketDetailView(TemplateView):
         subtotal = sum(basket_item.product.price for basket_item in basket_items)
         context['subtotal'] = subtotal
 
-        total = basket.coupon_code.get_discounted_value(subtotal) if basket.coupon_code else subtotal
+        total = 0
+        if basket:
+            total = basket.coupon_code.get_discounted_value(subtotal) if basket.coupon_code else subtotal
         context['total'] = total
 
         context['discount'] = total - subtotal
