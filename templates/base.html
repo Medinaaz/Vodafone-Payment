@@ -1,6 +1,5 @@
-{% load static %}
-
 <!DOCTYPE html>
+{% load i18n static %}
 <html lang="en">
 <head>
     <title>{% block title %}{% endblock %} | Marketplace</title>
@@ -8,8 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <link rel="stylesheet" href="{% static "bootstrap/css/bootstrap.min.css" %}">
     <link rel="stylesheet" href="{% static "css/styles.min.css" %}">
-{#    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">#}
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
+    <link rel="stylesheet" href="{% static "fontawesome/css/all.min.css" %}">
+    {% block extraHead %}{% endblock %}
 </head>
 
 <body>
@@ -34,23 +34,27 @@
     <div class="container">
         <div class="row" style="margin-top: 5px;padding-top: 0px;">
             <div class="col-sm-3">
-                <h5 class="text-center" style="font-size: 12px;">Site Map</h5>
+                <h5 class="text-center" style="font-size: 12px;">{% trans "Site Map" %}</h5>
             </div>
             <div class="col-sm-3">
-                <h5 class="text-center" style="font-size: 12px;">Legal Terms</h5>
+                <h5 class="text-center" style="font-size: 12px;">{% trans "Legal Terms" %}</h5>
             </div>
             <div class="col-sm-3 text-center">
-                <h5 style="font-size: 12px;">Privacy and Cookies</h5>
+                <h5 style="font-size: 12px;">{% trans "Privacy and Cookies" %}</h5>
             </div>
             <div class="col-sm-3">
-                <h5 class="text-center" style="font-size: 12px;">Contact Us</h5>
+                <h5 class="text-center" style="font-size: 12px;">{% trans "Contact Us" %}</h5>
             </div>
         </div>
     </div>
     <div class="footer-copyright">
-        <p style="font-size: 12px;">© 2020 Copyright</p>
+        <p style="font-size: 12px;">© 2020 <a href="https://gitlab.com/produck/marketplace/-/graphs/master" target="_blank"><i class="fab fa-gitlab"></i> Marketplace Contributors</a></p>
     </div>
 </footer>
-<!-- footer ends -->
+<!-- footer ends -->'
+<script type="text/javascript" src="{% static "js/jquery.min.js" %}"></script>
+<script type="text/javascript" src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>
+<script type="text/javascript" src="{% static "js/script.min.js" %}"></script>
+{% block extraJS %}{% endblock %}
 </body>
 </html>
