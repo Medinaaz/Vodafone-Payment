@@ -11,6 +11,7 @@ INSTALLED_APPS = [
     'django_filters',
     'product',
     'tags',
+    'basket',
 ]
 
 MIDDLEWARE = [
