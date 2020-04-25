@@ -7,7 +7,7 @@ from tags.models import Tag
 
 def get_product_image_path(instance, filename):
     extension = filename.split('.')[-1]
-    file_name = str(uuid4())
+    file_name = instance.slug
     year = now().year
     return f"products/{year}/{file_name}.{extension}"
 
