@@ -17,8 +17,6 @@ class BasketDetailView(TemplateView):
         except (Basket.DoesNotExist, Basket.MultipleObjectsReturned):
             basket = None
 
-        context['basket'] = basket
-
         basket_items = BasketItem.objects.filter(
             basket=basket,
         )
