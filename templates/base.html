@@ -26,6 +26,15 @@
         </div>
     </div>
 </nav>
+{% block subNavigation %}
+<div class="nav-scroller bg-white shadow-sm container">
+  <nav class="nav nav-underline">
+      {% for category in categories %}
+        <a class="nav-link{% if product_category and product_category == category %} sub-nav-active{% endif %}" href="#">{% if category.template_icon %}<i class="{{ category.template_icon }}"></i> {% endif %}{{ category.name }}</a>
+      {% endfor %}
+  </nav>
+</div>
+{% endblock %}
 <!-- navigation bar ends -->
 
 {% block content %}{% endblock %}

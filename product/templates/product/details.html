@@ -32,7 +32,7 @@
         <div class="col-5">
         <div class= "h3 my-auto">{{ product.name }}</div>
         <div>
-            <p class="mb-1">{{ product.price|floatformat:2 }} <i class="fas fa-lira-sign"></i></p>
+            <p class="mb-1 font-weight-bold">{{ product.price|floatformat:2 }} <i class="fas fa-lira-sign"></i></p>
             {% for property in main_properties %}
             <p class="{% if forloop.last %}mb-5{% else %}mb-1{% endif %}">{{ property.option.name }}: {{ property.value }}</p>
             {% endfor %}

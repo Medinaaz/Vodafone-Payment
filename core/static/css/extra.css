@@ -4,3 +4,6 @@
 .red-text {
     color: #dc3545;
 }
+.sub-nav-active {
+    font-weight: bold;
+}
