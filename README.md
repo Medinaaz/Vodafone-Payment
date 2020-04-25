@@ -28,6 +28,8 @@ You can add your own template folder under this one and reuse the "base.html" fi
 Static files should be added under your own application (for example: `product/static/`).
 All static files from all applications will be merged together in the production under the `/static/` folder in the root (base) directory of the project.
 
+**Don't add anything under the root static and media folders!**
+
 # User relation
 
 This project is using a customizable user model.
