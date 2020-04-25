@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block title %}{{ product.name }}{% endblock %}
+{% block content %}
+<div class="container" style="padding-top:5%">
+    <div class="row justify-content-center">
+      <div class="col-3" style="height: 20%">
+        <div id="demo" class="carousel slide" data-ride="carousel">
+
+            <!-- Indicators -->
+            <ul class="carousel-indicators">
+              <li data-target="#demo" data-slide-to="0" class="active"></li>
+              <li data-target="#demo" data-slide-to="1"></li>
+              <li data-target="#demo" data-slide-to="2"></li>
+            </ul>
+
+            <!-- The slideshow -->
+            <div class="carousel-inner" style= "text-align:center">
+                {% for image in product.images.all %}
+              <div class="carousel-item active">
+                <img src="{{ image.image.url }}" alt="{{ image.title }}">
+              </div>
+                {% endfor %}
+            </div>
+
+            <!-- Left and right controls -->
+                <a class="carousel-control-prev my-auto" href="#demo" data-slide="prev" style = " box-shadow: 0 0 10px rgba(0,0,0,.5);
+                border-radius: 50%;
+                width: 48px;
+                height: 48px;
+                background-color: #ffffff;">
+                  <span class="carousel-control-prev-icon" style = "filter:invert()"></span>
+                </a>
+            <a class="carousel-control-next my-auto" href="#demo" data-slide="next"  style = " box-shadow: 0 0 10px rgba(0,0,0,.5);
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            background-color: #ffffff;">
+              <span class="carousel-control-next-icon" style = "filter:invert()"></span>
+            </a>
+
+          </div>
+
+      </div>
+
+
+      <div class="col-6">
+        <div class= "h3 my-auto">Product Info</div>
+        <div>
+            Samsung Galaxy S20 Ultra</br>
+            ₺ 4310 x3 ay</br>
+            Renk: Gri</br>
+            Hafıza: 128GB</br>
+            Fiyat: 12000 TL</br>
+            <button type="button" class="btn btn-danger">Sepete Ekle</button>
+        </div>
+
+
+      </div>
+    </div>
+
+
+    <div>
+        <div class= "h3 my-auto">Details</div>
+
+    <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <th scope="row">Lorem</th>
+            <td>Ipsum</td>
+          </tr>
+          <tr>
+            <th scope="row">Lorem</th>
+            <td>Ipsum</td>
+          </tr>
+          <tr>
+            <th scope="row">Lorem</th>
+            <td>Ipsum</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+</div>
+{% endblock %}
