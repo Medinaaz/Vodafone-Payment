@@ -1,85 +1,57 @@
 {% extends "base.html" %}
-
+{% load i18n %}
 {% block title %}{{ product.name }}{% endblock %}
 {% block content %}
 <div class="container" style="padding-top:5%">
     <div class="row justify-content-center">
-      <div class="col-3" style="height: 20%">
-        <div id="demo" class="carousel slide" data-ride="carousel">
-
-            <!-- Indicators -->
-            <ul class="carousel-indicators">
-              <li data-target="#demo" data-slide-to="0" class="active"></li>
-              <li data-target="#demo" data-slide-to="1"></li>
-              <li data-target="#demo" data-slide-to="2"></li>
-            </ul>
-
-            <!-- The slideshow -->
-            <div class="carousel-inner" style= "text-align:center">
-                {% for image in product.images.all %}
-              <div class="carousel-item active">
-                <img src="{{ image.image.url }}" alt="{{ image.title }}">
-              </div>
-                {% endfor %}
+        <div class="col-3">
+        <div id="productImages" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+              {% for image in product.images.all %}
+            <li data-target="#productImages" data-slide-to="{{ forloop.counter0 }}"{% if forloop.first %} class="active"{% endif %}></li>
+              {% endfor %}
+          </ol>
+          <div class="carousel-inner">
+              {% for image in product.images.all %}
+            <div class="carousel-item{% if forloop.first %} active{% endif %}">
+              <img src="{{ image.image.url }}" class="d-block w-100" alt="{{ image.title }}">
             </div>
-
-            <!-- Left and right controls -->
-                <a class="carousel-control-prev my-auto" href="#demo" data-slide="prev" style = " box-shadow: 0 0 10px rgba(0,0,0,.5);
-                border-radius: 50%;
-                width: 48px;
-                height: 48px;
-                background-color: #ffffff;">
-                  <span class="carousel-control-prev-icon" style = "filter:invert()"></span>
-                </a>
-            <a class="carousel-control-next my-auto" href="#demo" data-slide="next"  style = " box-shadow: 0 0 10px rgba(0,0,0,.5);
-            border-radius: 50%;
-            width: 48px;
-            height: 48px;
-            background-color: #ffffff;">
-              <span class="carousel-control-next-icon" style = "filter:invert()"></span>
-            </a>
-
+              {% endfor %}
           </div>
-
-      </div>
-
-
-      <div class="col-6">
-        <div class= "h3 my-auto">Product Info</div>
-        <div>
-            Samsung Galaxy S20 Ultra</br>
-            ₺ 4310 x3 ay</br>
-            Renk: Gri</br>
-            Hafıza: 128GB</br>
-            Fiyat: 12000 TL</br>
-            <button type="button" class="btn btn-danger">Sepete Ekle</button>
+          <a class="carousel-control-prev" href="#productImages" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">{% trans "Previous" %}</span>
+          </a>
+          <a class="carousel-control-next" href="#productImages" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">{% trans "Next" %}</span>
+          </a>
         </div>
-
-
-      </div>
+        </div>
+        <div class="col-1"></div>
+        <div class="col-5">
+        <div class= "h3 my-auto">{{ product.name }}</div>
+        <div>
+            <p class="mb-1">{{ product.price|floatformat:2 }} <i class="fas fa-lira-sign"></i></p>
+            {% for property in main_properties %}
+            <p class="{% if forloop.last %}mb-5{% else %}mb-1{% endif %}">{{ property.option.name }}: {{ property.value }}</p>
+            {% endfor %}
+            <button type="button" class="btn btn-danger"><i class="fas fa-shopping-basket"></i> {% trans "Add to basket" %}</button>
+        </div>
+        </div>
     </div>
-
-
     <div>
-        <div class= "h3 my-auto">Details</div>
-
-    <table class="table table-bordered">
-        <tbody>
-          <tr>
-            <th scope="row">Lorem</th>
-            <td>Ipsum</td>
-          </tr>
-          <tr>
-            <th scope="row">Lorem</th>
-            <td>Ipsum</td>
-          </tr>
-          <tr>
-            <th scope="row">Lorem</th>
-            <td>Ipsum</td>
-          </tr>
-        </tbody>
-      </table>
-
+        <div class= "h3 my-auto">{% trans "Additional details" %}</div>
+        <table class="table table-bordered">
+            <tbody>
+            {% for property in additional_properties %}
+              <tr>
+                <th scope="row">{{ property.option.name }}</th>
+                  <td>{% if property.value == "check" %}<i class="fa fa-check-circle green-text"></i>{% elif property.value == "no-check" %}<i class="fa fa-times-circle red-text"></i>{% else %}{{ property.value }}{% endif %}</td>
+              </tr>
+            {% endfor %}
+            </tbody>
+        </table>
     </div>
 </div>
 {% endblock %}

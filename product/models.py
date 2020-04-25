@@ -82,3 +82,32 @@ class ProductImages(models.Model):
 
     def __str__(self) -> str:
         return "{title} for {product}".format(title=self.title, product=self.product.name)
+
+
+class PropertyOption(models.Model):
+    name = models.CharField(_("Property name"), max_length=100, unique=True)
+
+    class Meta:
+        verbose_name = _("Property option")
+        verbose_name_plural = _("Property options")
+        ordering = ("name",)
+
+    def __str__(self):
+        return self.name
+
+
+class ProductProperty(models.Model):
+    product = models.ForeignKey(
+        Product, verbose_name=_("Product"), related_name="properties", on_delete=models.CASCADE
+    )
+    option = models.ForeignKey(
+        PropertyOption, verbose_name=_("Option"), related_name="usages", on_delete=models.CASCADE
+    )
+    value = models.CharField(_("Value"), max_length=255)
+    is_main_property = models.BooleanField(_("Main property"), default=False)
+
+    class Meta:
+        verbose_name = _("Product property")
+        verbose_name_plural = _("Product properties")
+        ordering = ("product", "option")
+        unique_together = ["product", "option"]

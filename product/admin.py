@@ -1,10 +1,15 @@
 from django.contrib import admin
-from product.models import ProductCategory, Product, ProductImages
+from product.models import ProductCategory, Product, ProductImages, PropertyOption, ProductProperty
 
 
 class InlineProductImagesAdmin(admin.TabularInline):
     model = ProductImages
     prepopulated_fields = {"slug": ("title",)}
+
+
+class InlineProductPropertyAdmin(admin.TabularInline):
+    model = ProductProperty
+    autocomplete_fields = ("option",)
 
 
 @admin.register(ProductCategory)
@@ -17,7 +22,7 @@ class ProductCategoryAdmin(admin.ModelAdmin):
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    inlines = [InlineProductImagesAdmin]
+    inlines = [InlineProductImagesAdmin, InlineProductPropertyAdmin]
     list_display = ('name', 'category', 'price', 'available_quantity', 'barcode', 'status', 'modified_at')
     list_filter = ('category', 'status', 'modified_at')
     search_fields = ('name', 'barcode')
@@ -32,3 +37,16 @@ class ProductImagesAdmin(admin.ModelAdmin):
     search_fields = ('title',)
     autocomplete_fields = ('product',)
     prepopulated_fields = {"slug": ("title",)}
+
+
+@admin.register(PropertyOption)
+class PropertyOptionAdmin(admin.ModelAdmin):
+    list_display = ("name",)
+    search_fields = ("name",)
+
+
+@admin.register(ProductProperty)
+class ProductPropertyAdmin(admin.ModelAdmin):
+    list_display = ("pk", "option", "value", "is_main_property", "product")
+    search_fields = ("value",)
+    autocomplete_fields = ("product", "option")

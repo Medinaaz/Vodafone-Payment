@@ -2,7 +2,7 @@ from django.http import Http404
 from django.utils.translation import ugettext_lazy as _
 from django.views.generic import TemplateView
 
-from product.models import Product, StatusChoices
+from product.models import Product, StatusChoices, ProductProperty
 
 
 class ProductDetailsView(TemplateView):
@@ -17,4 +17,6 @@ class ProductDetailsView(TemplateView):
         if not product:
             raise Http404(_(f"Product {slug} was not found!"))
         context["product"] = product
+        context["main_properties"] = product.properties.filter(is_main_property=True).select_related("option")
+        context["additional_properties"] = product.properties.filter(is_main_property=False).select_related("option")
         return context
