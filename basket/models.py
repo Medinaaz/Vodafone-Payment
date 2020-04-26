@@ -21,32 +21,53 @@ class Basket(models.Model):
         blank=True,
         null=True,
     )
+    total = models.FloatField(_("Total amount"), default=0.0)
 
     class Meta:
-        verbose_name = _("basket")
-        verbose_name_plural = _("baskets")
+        verbose_name = _("Basket")
+        verbose_name_plural = _("Baskets")
 
     def __str__(self):
         return f"Basket#{self.id}"
 
+    @classmethod
+    def current_basket(cls, user: User):
+        try:
+            return user.basket
+        except cls.DoesNotExist:
+            return cls.objects.create(user=user)
+
+    def update_total_amount(self, commit=True):
+        """Update basket's total amount and result the updated basket."""
+        subtotal = sum(basket_item.product.price * basket_item.quantity for basket_item in self.items.all())
+        total = self.coupon_code.get_discounted_value(subtotal) if self.coupon_code else subtotal
+        if self.total != total:
+            self.total = total
+            if commit:
+                self.save()
+        return self
+
+
+class Size(models.TextChoices):
+    NONE = 'N', _("None")
+    SMALL = 'S', _("Small")
+    MEDIUM = 'M', _("Medium")
+    LARGE = 'L', _("Large")
+
+
+class Color(models.TextChoices):
+    NONE = 'none', _("None")
+    BLACK = 'black', _("Black")
+    WHITE = 'white', _("White")
+
 
 class BasketItem(models.Model):
-    class Size(models.TextChoices):
-        NONE = 'N', _("None")
-        SMALL = 'S', _("Small")
-        MEDIUM = 'M', _("Medium")
-        LARGE = 'L', _("Large")
-
-    class Color(models.TextChoices):
-        NONE = 'none', _("None")
-        BLACK = 'black', _("Black")
-        WHITE = 'white', _("White")
-
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-    basket = models.ForeignKey(Basket, on_delete=models.CASCADE)
+    basket = models.ForeignKey(Basket, on_delete=models.CASCADE, related_name="items")
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    quantity = models.IntegerField(_("Quantity"), default=1)
 
     size = models.CharField(
         max_length=4,
@@ -60,8 +81,8 @@ class BasketItem(models.Model):
     )
 
     class Meta:
-        verbose_name = _("basket item")
-        verbose_name_plural = _("basket items")
+        verbose_name = _("Basket item")
+        verbose_name_plural = _("Basket items")
 
     def __str__(self):
         return f"{self.product}"

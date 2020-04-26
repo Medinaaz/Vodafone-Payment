@@ -1,0 +1,54 @@
+function getCookie(name) {
+  let cookieValue = null;
+  if (document.cookie && document.cookie != '') {
+    let cookies = document.cookie.split(';');
+    for (let i = 0; i < cookies.length; i++) {
+      let cookie = jQuery.trim(cookies[i]);
+      // Does this cookie string begin with the name we want?
+      if (cookie.substring(0, name.length + 1) === (name + '=')) {
+        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+        break;
+      }
+    }
+  }
+  return cookieValue;
+}
+let csrftoken = getCookie('csrftoken');
+function csrfSafeMethod(method) {
+    // these HTTP methods do not require CSRF protection
+    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+}
+$.ajaxSetup({
+    beforeSend: function(xhr, settings) {
+        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+            xhr.setRequestHeader("X-CSRFToken", csrftoken);
+        }
+    }
+});
+$(document).ready(function () {
+    $(".add-basket-item").on("click", function (e) {
+        e.preventDefault();
+        let me = $(this);
+        me.addClass('disabled');
+        let url = $(".main-marketplace-navigation").data("basket-api");
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: {
+                    product_slug: me.data("product-slug"),
+                    quantity: me.data("quantity")
+                },
+            success: function (data) {
+                me.text(Translations.added_to_basket)
+                me.removeClass("btn-danger");
+                me.addClass("btn-success");
+                // window.location.reload();
+            },
+            error: function (xhr) {
+                let data = jQuery.parseJSON(xhr.responseText);
+                me.text(data.message);
+                me.removeClass('disabled')
+            }
+        });
+    })
+})

@@ -36,7 +36,9 @@
             {% for property in main_properties %}
             <p class="{% if forloop.last %}mb-5{% else %}mb-1{% endif %}">{{ property.option.name }}: {{ property.value }}</p>
             {% endfor %}
-            <button type="button" class="btn btn-danger"><i class="fas fa-shopping-basket"></i> {% trans "Add to basket" %}</button>
+            <button type="button" class="btn btn-danger add-basket-item" data-product-slug="{{ product.slug }}" data-quantity="1">
+                <i class="fas fa-shopping-basket"></i> {% trans "Add to basket" %}
+            </button>
         </div>
         </div>
     </div>

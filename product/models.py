@@ -1,7 +1,7 @@
-from django.utils.translation import ugettext_lazy as _
 from django.db import models
 from django.utils.timezone import now
-from uuid import uuid4
+from django.utils.translation import ugettext_lazy as _
+
 from tags.models import Tag
 
 
