@@ -1,4 +1,7 @@
+from typing import Union
+
 from django.db import models
+from django.db.models import Avg
 from django.utils.timezone import now
 from django.utils.translation import ugettext_lazy as _
 
@@ -56,6 +59,13 @@ class Product(models.Model):
     @property
     def main_image(self):
         return self.images.order_by("rank", "modified_at").first()
+
+    @property
+    def average_rating(self) -> Union[int, None]:
+        try:
+            return int(self.comments.all().aggregate(avg_rating=Avg("rate"))["avg_rating"])
+        except TypeError:
+            return None
 
     class Meta:
         verbose_name = _("Product")

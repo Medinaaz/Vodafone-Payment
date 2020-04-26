@@ -12,6 +12,7 @@ INSTALLED_APPS = [
     'core',
     'product',
     'tags',
+    'comment',
     'basket',
 ]
 
