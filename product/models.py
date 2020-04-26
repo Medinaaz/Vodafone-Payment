@@ -53,6 +53,10 @@ class Product(models.Model):
     created_at = models.DateTimeField(_("Created"), auto_now_add=True, editable=False)
     modified_at = models.DateTimeField(_("Modified"), auto_now=True, editable=False)
 
+    @property
+    def main_image(self):
+        return self.images.order_by("rank", "modified_at").first()
+
     class Meta:
         verbose_name = _("Product")
         verbose_name_plural = _("Products")
