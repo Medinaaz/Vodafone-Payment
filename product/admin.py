@@ -1,19 +1,20 @@
 from django.contrib import admin
+from modeltranslation.admin import TranslationAdmin, TranslationTabularInline
 from product.models import ProductCategory, Product, ProductImages, PropertyOption, ProductProperty
 
 
-class InlineProductImagesAdmin(admin.TabularInline):
+class InlineProductImagesAdmin(TranslationTabularInline):
     model = ProductImages
     prepopulated_fields = {"slug": ("title",)}
 
 
-class InlineProductPropertyAdmin(admin.TabularInline):
+class InlineProductPropertyAdmin(TranslationTabularInline):
     model = ProductProperty
     autocomplete_fields = ("option",)
 
 
 @admin.register(ProductCategory)
-class ProductCategoryAdmin(admin.ModelAdmin):
+class ProductCategoryAdmin(TranslationAdmin):
     list_display = ('name', 'template_icon', 'modified_at')
     list_filter = ('modified_at',)
     search_fields = ('name',)
@@ -21,7 +22,7 @@ class ProductCategoryAdmin(admin.ModelAdmin):
 
 
 @admin.register(Product)
-class ProductAdmin(admin.ModelAdmin):
+class ProductAdmin(TranslationAdmin):
     inlines = [InlineProductImagesAdmin, InlineProductPropertyAdmin]
     list_display = ('name', 'category', 'price', 'available_quantity', 'barcode', 'status', 'modified_at')
     list_filter = ('category', 'status', 'modified_at')
@@ -31,7 +32,7 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 @admin.register(ProductImages)
-class ProductImagesAdmin(admin.ModelAdmin):
+class ProductImagesAdmin(TranslationAdmin):
     list_display = ('title', 'product', 'rank', 'modified_at')
     list_filter = ('modified_at',)
     search_fields = ('title',)
@@ -40,13 +41,13 @@ class ProductImagesAdmin(admin.ModelAdmin):
 
 
 @admin.register(PropertyOption)
-class PropertyOptionAdmin(admin.ModelAdmin):
+class PropertyOptionAdmin(TranslationAdmin):
     list_display = ("name",)
     search_fields = ("name",)
 
 
 @admin.register(ProductProperty)
-class ProductPropertyAdmin(admin.ModelAdmin):
+class ProductPropertyAdmin(TranslationAdmin):
     list_display = ("pk", "option", "value", "is_main_property", "product")
     search_fields = ("value",)
     autocomplete_fields = ("product", "option")

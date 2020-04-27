@@ -1,6 +1,7 @@
 # Base Settings
 
 INSTALLED_APPS = [
+    'modeltranslation',
     'django.contrib.admin',
     'django.contrib.auth',
     'user',
