@@ -87,6 +87,9 @@ LANGUAGES = (
     ('en', _('English')),
     ('tr', _('Turkish')),
 )
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, 'locale'),
+)
 LANGUAGE_CODE = 'en'
 TIME_ZONE = 'UTC'
 USE_I18N = True

@@ -1,0 +1,470 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-04-26 20:43+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: basket/admin.py:56
+#, python-brace-format
+msgid "{0} expired coupons deleted!"
+msgstr ""
+
+#: basket/admin.py:58
+msgid "Delete expired coupons"
+msgstr ""
+
+#: basket/admin.py:70
+#, python-brace-format
+msgid "Coupon was duplicated {0} times with new codes."
+msgstr ""
+
+#: basket/admin.py:72
+msgid "Duplicate coupon n times with new codes"
+msgstr ""
+
+#: basket/admin.py:95
+msgid "Selected coupon usages were reset!"
+msgstr ""
+
+#: basket/admin.py:97
+msgid "Reset selected coupon usages"
+msgstr ""
+
+#: basket/models.py:24
+msgid "Total amount"
+msgstr ""
+
+#: basket/models.py:27
+msgid "Basket"
+msgstr ""
+
+#: basket/models.py:28
+msgid "Baskets"
+msgstr ""
+
+#: basket/models.py:52 basket/models.py:59
+msgid "None"
+msgstr ""
+
+#: basket/models.py:53
+msgid "Small"
+msgstr ""
+
+#: basket/models.py:54
+msgid "Medium"
+msgstr ""
+
+#: basket/models.py:55
+msgid "Large"
+msgstr ""
+
+#: basket/models.py:60
+msgid "Black"
+msgstr ""
+
+#: basket/models.py:61
+msgid "White"
+msgstr ""
+
+#: basket/models.py:70
+msgid "Quantity"
+msgstr ""
+
+#: basket/models.py:84
+msgid "Basket item"
+msgstr ""
+
+#: basket/models.py:85
+msgid "Basket items"
+msgstr ""
+
+#: basket/models.py:97 basket/models.py:130
+msgid "allowed users rule"
+msgstr ""
+
+#: basket/models.py:102 basket/models.py:143
+msgid "max uses rule"
+msgstr ""
+
+#: basket/models.py:107 basket/models.py:155
+msgid "validity rule"
+msgstr ""
+
+#: basket/models.py:111 basket/models.py:212
+msgid "ruleset"
+msgstr ""
+
+#: basket/models.py:112
+msgid "rulesets"
+msgstr ""
+
+#: basket/models.py:122
+msgid "users"
+msgstr ""
+
+#: basket/models.py:126
+msgid "all users?"
+msgstr ""
+
+#: basket/models.py:131
+msgid "allowed users rules"
+msgstr ""
+
+#: basket/models.py:138
+msgid "maximum uses"
+msgstr ""
+
+#: basket/models.py:139
+msgid "infinite uses?"
+msgstr ""
+
+#: basket/models.py:140
+msgid "uses per user"
+msgstr ""
+
+#: basket/models.py:144
+msgid "max uses rules"
+msgstr ""
+
+#: basket/models.py:151
+msgid "expiration date"
+msgstr ""
+
+#: basket/models.py:152
+msgid "is active?"
+msgstr ""
+
+#: basket/models.py:156
+msgid "validity rules"
+msgstr ""
+
+#: basket/models.py:163
+msgid "user"
+msgstr ""
+
+#: basket/models.py:164 basket/models.py:216
+msgid "coupon"
+msgstr ""
+
+#: basket/models.py:165 basket/models.py:203
+msgid "times used"
+msgstr ""
+
+#: basket/models.py:168
+msgid "coupon user"
+msgstr ""
+
+#: basket/models.py:169
+msgid "coupon users"
+msgstr ""
+
+#: basket/models.py:176
+msgid "value"
+msgstr ""
+
+#: basket/models.py:177
+msgid "is percentage?"
+msgstr ""
+
+#: basket/models.py:180
+msgid "discount"
+msgstr ""
+
+#: basket/models.py:181
+msgid "discounts"
+msgstr ""
+
+#: basket/models.py:194
+msgid "coupon code"
+msgstr ""
+
+#: basket/models.py:207
+msgid "created at"
+msgstr ""
+
+#: basket/models.py:217
+msgid "coupons"
+msgstr ""
+
+#: basket/views.py:57 basket/views.py:63
+msgid "Product information was not found."
+msgstr ""
+
+#: basket/views.py:70 basket/views.py:75
+msgid "Please, specify a quantity for the item!"
+msgstr ""
+
+#: basket/views.py:89
+msgid "Basket updated"
+msgstr ""
+
+#: comment/models.py:8
+msgid "Author"
+msgstr ""
+
+#: comment/models.py:9 product/models.py:71 product/models.py:84
+#: product/models.py:115
+msgid "Product"
+msgstr ""
+
+#: comment/models.py:10
+msgid "Rate"
+msgstr ""
+
+#: comment/models.py:11
+msgid "Subject"
+msgstr ""
+
+#: comment/models.py:12 comment/models.py:17
+msgid "Comment"
+msgstr ""
+
+#: comment/models.py:13 product/models.py:30 product/models.py:56
+#: product/models.py:89
+msgid "Created"
+msgstr ""
+
+#: comment/models.py:14 product/models.py:31 product/models.py:57
+#: product/models.py:90
+msgid "Modified"
+msgstr ""
+
+#: comment/models.py:18
+msgid "Comments"
+msgstr ""
+
+#: marketplace/settings.py:87
+msgid "English"
+msgstr ""
+
+#: marketplace/settings.py:88
+msgid "Turkish"
+msgstr ""
+
+#: product/models.py:19
+msgid "Draft"
+msgstr ""
+
+#: product/models.py:20
+msgid "Public"
+msgstr ""
+
+#: product/models.py:21
+msgid "Hidden"
+msgstr ""
+
+#: product/models.py:26 product/models.py:44 tags/models.py:6
+msgid "Name"
+msgstr ""
+
+#: product/models.py:27 product/models.py:45 product/models.py:82
+#: tags/models.py:7
+msgid "Slug"
+msgstr ""
+
+#: product/models.py:28 product/models.py:50
+msgid "Description"
+msgstr ""
+
+#: product/models.py:29
+msgid "Template icon"
+msgstr ""
+
+#: product/models.py:34
+msgid "Product category"
+msgstr ""
+
+#: product/models.py:35
+msgid "Product categories"
+msgstr ""
+
+#: product/models.py:47
+msgid "Category"
+msgstr ""
+
+#: product/models.py:51
+msgid "Price"
+msgstr ""
+
+#: product/models.py:52
+msgid "Available quantity"
+msgstr ""
+
+#: product/models.py:53
+msgid "Barcode"
+msgstr ""
+
+#: product/models.py:54 tags/models.py:11
+msgid "Tags"
+msgstr ""
+
+#: product/models.py:55
+msgid "Status"
+msgstr ""
+
+#: product/models.py:72
+msgid "Products"
+msgstr ""
+
+#: product/models.py:81
+msgid "Title"
+msgstr ""
+
+#: product/models.py:87
+msgid "Image"
+msgstr ""
+
+#: product/models.py:88
+msgid "Rank"
+msgstr ""
+
+#: product/models.py:93
+msgid "Product image"
+msgstr ""
+
+#: product/models.py:94
+msgid "Product images"
+msgstr ""
+
+#: product/models.py:102
+msgid "Property name"
+msgstr ""
+
+#: product/models.py:105
+msgid "Property option"
+msgstr ""
+
+#: product/models.py:106
+msgid "Property options"
+msgstr ""
+
+#: product/models.py:118
+msgid "Option"
+msgstr ""
+
+#: product/models.py:120
+msgid "Value"
+msgstr ""
+
+#: product/models.py:121
+msgid "Main property"
+msgstr ""
+
+#: product/models.py:124
+msgid "Product property"
+msgstr ""
+
+#: product/models.py:125
+msgid "Product properties"
+msgstr ""
+
+#: product/templates/product/details.html:23
+msgid "Previous"
+msgstr ""
+
+#: product/templates/product/details.html:27
+msgid "Next"
+msgstr ""
+
+#: product/templates/product/details.html:36
+msgid "N/A"
+msgstr ""
+
+#: product/templates/product/details.html:41
+msgid "Add to basket"
+msgstr ""
+
+#: product/templates/product/details.html:48
+msgid "Additional details"
+msgstr ""
+
+#: product/views.py:18
+#, python-brace-format
+msgid "Product {slug} was not found!"
+msgstr ""
+
+#: tags/models.py:10
+msgid "Tag"
+msgstr ""
+
+#: templates/base.html:47
+msgid "Site Map"
+msgstr ""
+
+#: templates/base.html:50
+msgid "Legal Terms"
+msgstr ""
+
+#: templates/base.html:53
+msgid "Privacy and Cookies"
+msgstr ""
+
+#: templates/base.html:56
+msgid "Contact Us"
+msgstr ""
+
+#: templates/base.html:73
+msgid "Added to basket"
+msgstr ""
+
+#: user/admin.py:16
+msgid "Account Info"
+msgstr ""
+
+#: user/admin.py:20 user/forms.py:21
+msgid "Password"
+msgstr ""
+
+#: user/admin.py:23
+msgid "Stamps"
+msgstr ""
+
+#: user/forms.py:12
+msgid "Email"
+msgstr ""
+
+#: user/forms.py:15
+msgid "Email *"
+msgstr ""
+
+#: user/forms.py:25
+msgid "Password *"
+msgstr ""
+
+#: user/forms.py:33 user/forms.py:36
+msgid "First Name"
+msgstr ""
+
+#: user/forms.py:42 user/forms.py:45
+msgid "Last Name"
+msgstr ""
+
+#: user/forms.py:51 user/forms.py:54
+msgid "Username"
+msgstr ""
+
+#: user/forms.py:67
+msgid "A user with that email address already exists."
+msgstr ""
+
+#: user/models.py:33
+msgid "User"
+msgstr ""
+
+#: user/models.py:34
+msgid "Users"
+msgstr ""

@@ -1,10 +1,13 @@
 <!DOCTYPE html>
-{% load i18n static %}
-<html lang="en">
+{% load i18n static webtags %}{% get_current_language as LANGUAGE_CODE %}{% get_available_languages as available_languages %}
+<html lang="{{ LANGUAGE_CODE }}">
 <head>
     <title>{% block title %}{% endblock %} | Marketplace</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    {% for lang_code, lang_name in available_languages %}
+    <link rel="alternate" hreflang="{{ lang_code }}" href="{{ request.path|replace_language:lang_code }}">{% endfor %}
+
     <link rel="stylesheet" href="{% static "bootstrap/css/bootstrap.min.css" %}">
     <link rel="stylesheet" href="{% static "css/styles.min.css" %}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
@@ -16,7 +19,7 @@
 <body>
 <!-- navigation bar starts -->
 <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar main-marketplace-navigation" style="position:relative" data-basket-api="{% url "basket_management_ajax" %}">
-    <div class="container"><a class="navbar-brand logo" href="/">Marketplace</a>
+    <div class="container"><a class="navbar-brand logo" href="{% url "homepage" %}">Marketplace</a>
         <div id="navcol-1" class="collapse navbar-collapse">
             <ul class="nav navbar-nav ml-auto">
                 <li class="nav-item">
@@ -43,17 +46,20 @@
 <footer class="page-footer dark" style="font-size: 16px;">
     <div class="container">
         <div class="row" style="margin-top: 5px;padding-top: 0px;">
-            <div class="col-sm-3">
+            <div class="col-sm-2">
                 <h5 class="text-center" style="font-size: 12px;">{% trans "Site Map" %}</h5>
             </div>
-            <div class="col-sm-3">
+            <div class="col-sm-2">
                 <h5 class="text-center" style="font-size: 12px;">{% trans "Legal Terms" %}</h5>
             </div>
-            <div class="col-sm-3 text-center">
-                <h5 style="font-size: 12px;">{% trans "Privacy and Cookies" %}</h5>
+            <div class="col-sm-2">
+                <h5 class="text-center" style="font-size: 12px;">{% trans "Privacy and Cookies" %}</h5>
             </div>
             <div class="col-sm-3">
                 <h5 class="text-center" style="font-size: 12px;">{% trans "Contact Us" %}</h5>
+            </div>
+            <div class="col-sm-3">
+                Lang
             </div>
         </div>
     </div>
