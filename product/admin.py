@@ -15,28 +15,28 @@ class InlineProductPropertyAdmin(TranslationTabularInline):
 
 @admin.register(ProductCategory)
 class ProductCategoryAdmin(TranslationAdmin):
-    list_display = ('name', 'template_icon', 'modified_at')
-    list_filter = ('modified_at',)
-    search_fields = ('name',)
+    list_display = ("name", "template_icon", "rank", "modified_at")
+    list_filter = ("modified_at",)
+    search_fields = ("name",)
     prepopulated_fields = {"slug": ("name",)}
 
 
 @admin.register(Product)
 class ProductAdmin(TranslationAdmin):
     inlines = [InlineProductImagesAdmin, InlineProductPropertyAdmin]
-    list_display = ('name', 'category', 'price', 'available_quantity', 'barcode', 'status', 'modified_at')
-    list_filter = ('category', 'status', 'modified_at')
-    search_fields = ('name', 'barcode')
-    autocomplete_fields = ('category', 'tags')
+    list_display = ("name", "category", "price", "available_quantity", "barcode", "status", "modified_at")
+    list_filter = ("category", "status", "modified_at")
+    search_fields = ("name", "barcode")
+    autocomplete_fields = ("category", "tags")
     prepopulated_fields = {"slug": ("name",)}
 
 
 @admin.register(ProductImages)
 class ProductImagesAdmin(TranslationAdmin):
-    list_display = ('title', 'product', 'rank', 'modified_at')
-    list_filter = ('modified_at',)
-    search_fields = ('title',)
-    autocomplete_fields = ('product',)
+    list_display = ("title", "product", "rank", "modified_at")
+    list_filter = ("modified_at",)
+    search_fields = ("title",)
+    autocomplete_fields = ("product",)
     prepopulated_fields = {"slug": ("title",)}
 
 

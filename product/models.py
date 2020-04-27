@@ -9,7 +9,7 @@ from tags.models import Tag
 
 
 def get_product_image_path(instance, filename):
-    extension = filename.split('.')[-1]
+    extension = filename.split(".")[-1]
     file_name = instance.slug
     year = now().year
     return f"products/{year}/{file_name}.{extension}"
@@ -27,13 +27,14 @@ class ProductCategory(models.Model):
     slug = models.SlugField(_("Slug"), max_length=50, unique=True)
     description = models.TextField(_("Description"), blank=True)
     template_icon = models.CharField(_("Template icon"), max_length=50, blank=True, null=True)
+    rank = models.IntegerField(_("Order rank"), default=1)
     created_at = models.DateTimeField(_("Created"), auto_now_add=True, editable=False)
     modified_at = models.DateTimeField(_("Modified"), auto_now=True, editable=False)
 
     class Meta:
         verbose_name = _("Product category")
         verbose_name_plural = _("Product categories")
-        ordering = ('name',)
+        ordering = ("rank",)
 
     def __str__(self) -> str:
         return self.name
@@ -70,7 +71,7 @@ class Product(models.Model):
     class Meta:
         verbose_name = _("Product")
         verbose_name_plural = _("Products")
-        ordering = ('modified_at',)
+        ordering = ("modified_at",)
 
     def __str__(self) -> str:
         return self.name
@@ -92,7 +93,7 @@ class ProductImages(models.Model):
     class Meta:
         verbose_name = _("Product image")
         verbose_name_plural = _("Product images")
-        ordering = ('rank', 'modified_at')
+        ordering = ("rank", "modified_at")
 
     def __str__(self) -> str:
         return "{title} for {product}".format(title=self.title, product=self.product.name)
