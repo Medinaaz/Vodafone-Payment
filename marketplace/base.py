@@ -15,6 +15,7 @@ INSTALLED_APPS = [
     'tags',
     'comment',
     'basket',
+    'listing',
 ]
 
 MIDDLEWARE = [

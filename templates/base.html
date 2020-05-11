@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
     <link rel="stylesheet" href="{% static "fontawesome/css/all.min.css" %}">
     <link rel="stylesheet" href="{% static "css/extra.css" %}">
+    
     {% block extraHead %}{% endblock %}
 </head>
 
@@ -36,7 +37,7 @@
 <div class="nav-scroller bg-white shadow-sm container">
   <nav class="nav nav-underline">
       {% for category in categories %}
-        <a class="nav-link{% if product_category and product_category == category %} sub-nav-active{% endif %}" href="#">{% if category.template_icon %}<i class="{{ category.template_icon }}"></i> {% endif %}{{ category.name }}</a>
+        <a class="nav-link{% if product_category and product_category == category %} sub-nav-active{% endif %}" href="{% url 'listing:product_list' category.slug %}">{% if category.template_icon %}<i class="{{ category.template_icon }}"></i> {% endif %}{{ category.name }}</a>
       {% endfor %}
   </nav>
 </div>
@@ -46,7 +47,7 @@
 {% block content %}{% endblock %}
 
 <!-- footer starts -->
-<footer class="page-footer dark" style="font-size: 16px;">
+<footer class="page-footer dark" style="display:block; font-size: 16px;">
     <div class="container">
         <div class="row" style="margin-top: 5px;padding-top: 0px;">
             <div class="col-sm-3">
