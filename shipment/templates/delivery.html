@@ -1,162 +1,15 @@
 
 {% extends "base.html" %}
 {% load i18n %}
-{% block title %}{{ product.name }}{% endblock %}
+{% block title %}Shipment{% endblock %}
 {% block content %}
 
-    <head><style>* {
-  box-sizing: border-box;
-}
-body {
-  margin: 0;
-}
-.form{
-  border-radius:3px;
-  <!--padding:10px 15px;-->
-  background-color:rgba(0,0,0,0.2);
-}
-.input{
-  width:100%;
-  margin-bottom:15px;
-  padding:7px 10px;
-  border-radius:2px;
-  color:#000;
-  <!--background-color:#554c57;-->
-  border:none;
-}
-.textarea{
-  width:100%;
-  margin-bottom:15px;
-  padding:7px 10px;
-  border-radius:2px;
-  color:#000;
-  <!--background-color:#554c57;-->
-  border:none;
-}
-.select{
-  width:100%;
-  margin-bottom:15px;
-  padding:7px 10px;
-  border-radius:2px;
-  color:#000;
-  <!--background-color:#554c57;-->
-  border:none;
-  height:30px;
-}
-.label{
-  width:100%;
-  display:block;
-}
-.button{
-  width:100%;
-  margin:15px 0;
-  background-color:#785580;
-  border:none;
-  color:#fff;
-  border-radius:2px;
-  padding:7px 10px;
-  font-size:1em;
-  cursor:pointer;
-}
-.row{
-  display:flex;
-  justify-content:flex-start;
-  align-items:stretch;
-  flex-wrap:nowrap;
-  padding:10px;
-}
-.cell{
-  min-height:75px;
-  flex-grow:1;
-  flex-basis:100%;
-}
-*{
-  box-sizing:border-box;
-}
-body{
-  margin:0;
-}
-#itgj:active{
-  opacity:1;
-}
-@keyframes fadeEffect{
-  from{
-    opacity:0;
-  }
-  to{
-    opacity:1;
-  }
-}
-@media (max-width: 768px){
-  .row{
-    flex-wrap:wrap;
-  }
-}
-        /* Popup box BEGIN */
-.hover_bkgr_fricc{
-    background:rgba(0,0,0,.4);
-    cursor:pointer;
-    display:none;
-    height:100%;
-    position:fixed;
-    text-align:center;
-    top:0;
-    width:100%;
-    z-index:10000;
-}
-.hover_bkgr_fricc .helper{
-    display:inline-block;
-    height:100%;
-    vertical-align:middle;
-}
-.hover_bkgr_fricc > div {
-    background-color: #fff;
-    box-shadow: 10px 10px 60px #555;
-    display: inline-block;
-    height: auto;
-    max-width: 551px;
-    min-height: 100px;
-    vertical-align: middle;
-    width: 60%;
-    position: relative;
-    border-radius: 8px;
-    padding: 15px 5%;
-}
-.popupCloseButton {
-    background-color: #fff;
-    border: 3px solid #999;
-    border-radius: 50px;
-    cursor: pointer;
-    display: inline-block;
-    font-family: arial;
-    font-weight: bold;
-    position: absolute;
-    top: -20px;
-    right: -20px;
-    font-size: 25px;
-    line-height: 30px;
-    width: 30px;
-    height: 30px;
-    text-align: center;
-}
-.popupCloseButton:hover {
-    background-color: #ccc;
-}
-.trigger_popup_fricc {
-    cursor: pointer;
-    font-size: 20px;
-    margin: 20px;
-    display: inline-block;
-    font-weight: bold;
-}
-/* Popup box BEGIN */
-
-</style>
-</head>
-<body>
-
-<h1>Shipment</h1>
-    <form method="POST" action="/tr/shipment/confirm/" class="confirm--shipment">{% csrf_token %}
+<div class="container" style="text-align:center;width:50%;margin-top:25px">
+                <div class="block-heading">
+                    <h2 class="text-info">Shipment</h2>
+                </div>
+                <div class="content" >
+                                <form method="POST" action="/tr/shipment/confirm/" class="confirm--shipment">{% csrf_token %}
         <label> Name </label>
         <div >{{form.name}}</div>
         <label>Surname</label>
@@ -173,16 +26,16 @@ body{
         <div >{{form.neighborhood}}</div>
         <label>Others</label>
         <div >{{form.others}}</div>
+        <button class="btn btn-primary btn-block btn-lg" style="margin: auto;width:40%;margin-top:25px;" type="submit">Confirm</button>
 
-        <button type="submit" class="save btn btn-default">Kaydet</button>
-    </form>
+                                </form>
+                            </div>
 
+            </div>
+<label id="ib7o" class="label" style="width:0px;height:0px"></label>
 
-</div>
-<label id="ib7o" class="label"></label>
-
-  <div class="cell" id="i8jb5n">
+  <div class="cell" id="i8jb5n" style="width:0px;height:0px">
   </div>
-</body>
+
 
 {% endblock %}

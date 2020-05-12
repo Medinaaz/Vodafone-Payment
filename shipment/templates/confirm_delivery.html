@@ -1,107 +1,17 @@
 
 {% extends "base.html" %}
 {% load i18n %}
-{% block title %}{{ product.name }}{% endblock %}
+{% block title %}Confirm address{% endblock %}
 {% block content %}
-<head>
-    <style>* {
-          box-sizing: border-box;
-        }
-        body {
-          margin: 0;
-        }
-        .form{
-          border-radius:3px;
-          <!--padding:10px 15px;-->
-          background-color:rgba(0,0,0,0.2);
-        }
-        .input{
-          width:100%;
-          margin-bottom:15px;
-          padding:7px 10px;
-          border-radius:2px;
-          color:#000;
-          <!--background-color:#554c57;-->
-          border:none;
-        }
-        .textarea{
-          width:100%;
-          margin-bottom:15px;
-          padding:7px 10px;
-          border-radius:2px;
-          color:#000;
-          <!--background-color:#554c57;-->
-          border:none;
-        }
-        .select{
-          width:100%;
-          margin-bottom:15px;
-          padding:7px 10px;
-          border-radius:2px;
-          color:#000;
-          <!--background-color:#554c57;-->
-          border:none;
-          height:30px;
-        }
-        .label{
-          width:100%;
-          display:block;
-        }
-        .button{
-          width:100%;
-          margin:15px 0;
-          background-color:#785580;
-          border:none;
-          color:#fff;
-          border-radius:2px;
-          padding:7px 10px;
-          font-size:1em;
-          cursor:pointer;
-        }
-        .row{
-          display:flex;
-          justify-content:flex-start;
-          align-items:stretch;
-          flex-wrap:nowrap;
-          padding:10px;
-        }
-        .cell{
-          min-height:75px;
-          flex-grow:1;
-          flex-basis:100%;
-        }
-        *{
-          box-sizing:border-box;
-        }
-        body{
-          margin:0;
-        }
-        #itgj:active{
-          opacity:1;
-        }
-        @keyframes fadeEffect{
-          from{
-            opacity:0;
-          }
-          to{
-            opacity:1;
-          }
-        }
-        @media (max-width: 768px){
-          .row{
-            flex-wrap:wrap;
-          }
-        }
-
-    </style>
-
-</head>
-<body>
 
 
-
+<div class="container" style="text-align:center;margin-top:170px;margin-bottom:170px;">
+                <div class="block-heading">
+                    <h2 class="text-info">Confirm Address</h2>
+                </div>
+                <div class="content" >
     <form method="POST" action="/tr/shipment/" class="save-shipment">{% csrf_token %}
-        <h1>Confirm Shipment</h1>
+
         <label> Name: {{form.name.value}}</label><br/>
         <label> Surname: {{form.surname.value}}</label><br/>
         <label> Email: {{form.email.value}}</label><br/>
@@ -110,16 +20,17 @@
         <label> Neighborhood: {{form.neighborhood.value}}</label><br/>
         <label> District: {{form.district.value}}</label><br/>
         <label> Additional Notes: {{form.others.value}}</label><br/>
-
-        <button type="submit" class="save btn btn-default">Onayla</button>
-        <button type="submit" formaction="/tr/shipment/change/">Yeniden Duzenle</button>
-        <div style="visibility:hidden">{{ form.as_p }}</div>
+        <button type="submit" class="btn btn-primary btn-block btn-lg" style="border: 0px;background-color:green;display: inline-block;width:auto;margin-top:25px;">Confirm</button>
+        <button type="submit" class="btn btn-primary btn-block btn-lg" style="border: 0px;background-color:red;display: inline-block;width:auto;margin-top:25px;" formaction="/tr/shipment/change/">Back</button>
+            <div style="display:none;">{{ form.as_p }}</div>
     </form>
-
+                    </div>
 <label id="ib7o" class="label"></label>
 
   <div class="cell" id="i8jb5n">
   </div>
-</body>
+</div>
+
+
 
 {% endblock %}
