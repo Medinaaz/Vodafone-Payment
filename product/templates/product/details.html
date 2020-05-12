@@ -79,10 +79,10 @@
                         <div class="d-flex justify-content-between">
                             <div>
                                 <span class="fa fa-star{% if comment.rate >= 0 %} checked{% endif %}"></span>
-                                <span class="fa fa-star{% if comment.rate >= 20 %} checked{% endif %}"></span>
-                                <span class="fa fa-star{% if comment.rate >= 40 %} checked{% endif %}"></span>
-                                <span class="fa fa-star{% if comment.rate >= 60 %} checked{% endif %}"></span>
-                                <span class="fa fa-star{% if comment.rate >= 80 %} checked{% endif %}"></span>
+                                <span class="fa fa-star{% if comment.rate > 20 %} checked{% endif %}"></span>
+                                <span class="fa fa-star{% if comment.rate > 40 %} checked{% endif %}"></span>
+                                <span class="fa fa-star{% if comment.rate > 60 %} checked{% endif %}"></span>
+                                <span class="fa fa-star{% if comment.rate > 80 %} checked{% endif %}"></span>
                             </div>
                             <p><small>{{ comment.modified_at|naturaltime }}</small></p>
                         </div>
