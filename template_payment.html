@@ -159,12 +159,21 @@
                         <i class="fa fa-address-card-o"></i> Address
                         <br>
                         <br>
-                        <address>
+                        <address id = "def_add">
                             Visit us at:<br>
                             Example.com<br>
                             Box 564, Disneyland<br>
                             USA
                         </address>
+						<br>
+						<button class="button button1" id="button1">Change the Address</button>
+						<!-- <form id="addressForm" action="/ChangeAdress" method = "post" display="none"> -->
+							<textarea id="newAdd" rows = "5" cols = "60" name = "description">defaultAddress</textarea>
+							<!-- defaultAdressi her seferinde güncelle  -->
+							<button class="button button1" id="button2" display="none">Ok</button>
+						<!-- </form> -->
+
+						<br>
                         <br>
                         <i class="fa fa-money"></i> Payment Menu
 <br><br>
@@ -190,15 +199,33 @@
                         <input type="text" id="ccnum" name="cardnumber" placeholder="XXXX-XXXX-XXXX-XXXX">
                             <div class="col-30">
                                 <label for="expmonth">Expiry Month</label>
-                                <input type="text" id="expmonth" name="expmonth" placeholder="MM">
+								<select name="month" id="expmonth" placeholder="Month">
+								<option value ="1">01</option>
+								<option value ="2">02</option>
+								<option value ="3">03</option>
+								<option value ="4">04</option>
+								<option value ="5">05</option>
+								<option value ="6">06</option>
+								<option value ="7">07</option>
+								<option value ="8">08</option>
+								<option value ="9">09</option>
+								<option value ="10">10</option>
+								<option value ="11">11</option>
+								<option value ="12">12</option>
+								</select>
                             </div>
+							<br/>
                             <div class="col-30">
-                                <label for="expyear">Exp Year</label>
-                                <input type="text" id="expyear" name="expyear" placeholder="YYYY">
-                            </div>
-                            <div class="col-30">
+                                <label for="selectYear">Exp Year</label>
+                                <select id ="selectYear" name="month" placeholder="Year">
+								<option value ="1">01</option>
+
+								</select>
+							</div>
+							<br/>
+							<div class="col-30">
                                 <label for="cvv">CVV</label>
-                                <input type="text" id="cvv" name="cvv" placeholder="XXX">
+                                <input type="number" id="cvv" min="0" pattern=".{3,4}" name="cvv" placeholder="XXX" autocomplete="off" tabindex="8">
                             </div>
                     </div>
 
@@ -206,7 +233,6 @@
                 <label>
                     <input type="checkbox" checked="checked" name="sameadr"> I accept the...
                 </label>
-            </form>
         </div>
     </div>
     <div class="col-25">
@@ -225,6 +251,51 @@
 
 
 </div>
+<!--<script src="jquery-3.5.1.js"></script>-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        var $def_add = $('#def_add'); // document.getElementById("def_add")
+        var $addressForm = $('#addressForm');
+        var $newAdd = $('#newAdd');
+        var $button2 = $('#button2');
+        var $button1 = $('#button1');
+        var $selectYear = $('#selectYear');
+		
+		$newAdd.hide()
+		$button2.hide()
+		
+        $button1.click(function () {
+            $def_add.hide(); // document.getElementById("def_add").style.display= "none";
+            $addressForm.show();
+            $newAdd.show();
+            $button2.show();
+            $button1.hide();
 
+        })
+
+        $button2.click(function () {
+			var $new_val = $newAdd.val();
+            $def_add.show();
+            $def_add.text($new_val); // document.getElementById("def_add").innerHTML = document.getElementById("newAdd").value
+            $newAdd.hide();
+            $button1.show();
+            $button2.hide();
+            $addressForm.hide();
+
+        })
+
+        let options = ``;``
+        let start = 2020;
+        let end = 2055;
+        for(let year = start ; year <=end; year++){
+            options += `<option>${year}</option>`
+        }
+        $selectYear.html(options);
+
+
+    });
+
+</script>
 </body>
 </html>
