@@ -5,14 +5,16 @@ from django.conf.urls.i18n import i18n_patterns
 from django.views.static import serve
 
 from core.views import HomePageView
+from listing.views import IndexView
 from product.views import ProductDetailsView
 
 urlpatterns = i18n_patterns(
     path('admin/', admin.site.urls),
     path('product/<slug:slug>/', ProductDetailsView.as_view(), name="product_details"),
     path('basket/', include('basket.urls')),
+    path('listing/', include('listing.urls')),
+    path('', IndexView.as_view(), name="homepage"),
     path('shipment/', include('shipment.urls')),
-    path('', HomePageView.as_view(), name="homepage"),
 )
 
 if settings.DEBUG:
