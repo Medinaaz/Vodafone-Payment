@@ -69,7 +69,9 @@
                                     <span class="text">Total</span>
                                     <span class="price">${{ total }}</span>
                                 </h4>
-                                <button class="btn btn-primary btn-block btn-lg" href="{% url 'payment' %}" type="button">Checkout</button>
+                                <form method="GET" action='{% url "payment:cart" %}'>
+                                    <button class="btn btn-primary btn-block btn-lg" type="submit">Checkout</button>
+                                </form>
                             </div>
                         </div>
                     </div>

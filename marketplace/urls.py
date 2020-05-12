@@ -11,7 +11,7 @@ urlpatterns = i18n_patterns(
     path('admin/', admin.site.urls),
     path('product/<slug:slug>/', ProductDetailsView.as_view(), name="product_details"),
     path('basket/', include('basket.urls')),
-    path('payment/', include('payment.urls')),
+    path('payment/', include('payment.urls', namespace='payment')),
     path('', HomePageView.as_view(), name="homepage"),
 )
 
