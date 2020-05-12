@@ -14,6 +14,7 @@ urlpatterns = i18n_patterns(
     path('basket/', include('basket.urls')),
     path('listing/', include('listing.urls')),
     path('', IndexView.as_view(), name="homepage"),
+    path('shipment/', include('shipment.urls')),
 )
 
 if settings.DEBUG:

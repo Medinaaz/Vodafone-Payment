@@ -16,6 +16,7 @@ INSTALLED_APPS = [
     'comment',
     'basket',
     'listing',
+    'shipment',
 ]
 
 MIDDLEWARE = [
