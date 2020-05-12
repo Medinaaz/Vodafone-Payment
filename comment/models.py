@@ -1,7 +1,8 @@
-from django.utils.translation import ugettext_lazy as _
 from django.db import models
-from user.models import User
+from django.utils.translation import ugettext_lazy as _
+
 from product.models import Product
+from user.models import User
 
 
 class Comment(models.Model):
@@ -10,6 +11,7 @@ class Comment(models.Model):
     rate = models.IntegerField(_("Rate"), default=100)
     subject = models.CharField(_("Subject"), max_length=200, blank=True, null=True)
     message = models.TextField(_("Comment"), blank=True, null=True)
+    verified = models.BooleanField(_("Verified"), default=False)
     created_at = models.DateTimeField(_("Created"), auto_now_add=True, editable=False)
     modified_at = models.DateTimeField(_("Modified"), auto_now=True, editable=False)
 

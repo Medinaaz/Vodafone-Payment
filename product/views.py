@@ -2,6 +2,7 @@ from django.http import Http404
 from django.utils.translation import ugettext_lazy as _
 from django.views.generic import TemplateView
 
+from comment.forms import CommentForm
 from product.models import Product, StatusChoices
 
 
@@ -19,5 +20,7 @@ class ProductDetailsView(TemplateView):
         context["product"] = product
         context["product_category"] = product.category
         context["main_properties"] = product.properties.filter(is_main_property=True).select_related("option")
-        context["additional_properties"] = product.properties.filter(is_main_property=False).select_related("option")
+        context["additional_properties"] = product.properties.all().select_related("option")
+        context["comments"] = product.comments.filter(verified=True)
+        context["comment_form"] = CommentForm()
         return context

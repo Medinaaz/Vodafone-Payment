@@ -10,3 +10,9 @@
 .nav-icon {
     font-size: 25px;
 }
+.fa-star.checked {
+    color: orange;
+}
+.lfloat {
+    float: left;
+}
