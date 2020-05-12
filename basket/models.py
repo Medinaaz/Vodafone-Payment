@@ -28,7 +28,7 @@ class Basket(models.Model):
         verbose_name_plural = _("Baskets")
 
     def __str__(self):
-        return f"Basket#{self.id}"
+        return "Basket#{id}".format(id=self.id)
 
     @classmethod
     def current_basket(cls, user: User):
@@ -48,20 +48,9 @@ class Basket(models.Model):
         return self
 
 
-class Size(models.TextChoices):
-    NONE = 'N', _("None")
-    SMALL = 'S', _("Small")
-    MEDIUM = 'M', _("Medium")
-    LARGE = 'L', _("Large")
-
-
-class Color(models.TextChoices):
-    NONE = 'none', _("None")
-    BLACK = 'black', _("Black")
-    WHITE = 'white', _("White")
-
-
 class BasketItem(models.Model):
+    SIZE_CHOICES = [('N', "None"),('S', "Small"),('M', "Medium"), ('L', "Large")]
+    COLOR_CHOICES = [('none', "None"),('black', "Black"),('white', "White")]
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -71,13 +60,11 @@ class BasketItem(models.Model):
 
     size = models.CharField(
         max_length=4,
-        choices=Size.choices,
-        default=Size.NONE,
+        choices=SIZE_CHOICES
     )
     color = models.CharField(
         max_length=16,
-        choices=Color.choices,
-        default=Color.NONE,
+        choices=COLOR_CHOICES
     )
 
     class Meta:
@@ -85,7 +72,7 @@ class BasketItem(models.Model):
         verbose_name_plural = _("Basket items")
 
     def __str__(self):
-        return f"{self.product}"
+        return "{product}".format(product=self.product)
 
 
 # Coupon Codes
