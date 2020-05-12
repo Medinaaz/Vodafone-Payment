@@ -26,6 +26,26 @@
             background-color: crimson;
             color: white;
         }
+        .btn-group button {
+            background-color: crimson;
+            border: 2px solid white;
+            color: white; /* White text */
+            padding: 10px 24px;
+            cursor: pointer;
+            width: 47%;
+            display: block; /* Make the buttons appear below each other */
+        }
+
+        .btn-group button:not(:last-child) {
+            border-bottom: none; /* Prevent double borders */
+        }
+
+        /* Add a background color on hover */
+        .btn-group button:hover {
+            background-color: grey;
+            cursor: pointer;
+            cursor: hand;
+        }
         .button1 {
             background-color: crimson;
             border: none;
@@ -149,90 +169,91 @@
     <div class="col-75">
         <div class="container">
 
-                <div class="row">
-                    <div class="col-50">
-                        <h3>Billing Address</h3>
-                        <label for="fname"><i class="fa fa-user"></i> Full Name</label>
-                        <input type="text" id="fname" name="firstname" placeholder="Name Surname">
-                        <label for="email"><i class="fa fa-envelope"></i> Email</label>
-                        <input type="text" id="email" name="email" placeholder="something@example.com">
-                        <i class="fa fa-address-card-o"></i> Address
-                        <br>
-                        <br>
-                        <address id = "def_add">
-                            Visit us at:<br>
-                            Example.com<br>
-                            Box 564, Disneyland<br>
-                            USA
-                        </address>
-						<br>
-						<button class="button button1" id="button1">Change the Address</button>
-						<!-- <form id="addressForm" action="/ChangeAdress" method = "post" display="none"> -->
-							<textarea id="newAdd" rows = "5" cols = "60" name = "description">defaultAddress</textarea>
-							<!-- defaultAdressi her seferinde güncelle  -->
-							<button class="button button1" id="button2" display="none">Ok</button>
-						<!-- </form> -->
+            <div class="row">
+                <div class="col-50">
+                    <h3>Billing Address</h3>
+                    <label for="fname"><i class="fa fa-user"></i> Full Name</label>
+                    <input type="text" id="fname" name="firstname" placeholder="Name Surname">
+                    <label for="email"><i class="fa fa-envelope"></i> Email</label>
+                    <input type="text" id="email" name="email" placeholder="something@example.com">
+                    <i class="fa fa-address-card-o"></i> Address
+                    <br>
+                    <br>
+                    <address id = "def_add">
+                        ITU International Office<br>
+                        Ayazaga Campus<br>
+                        Registrator's Office Building<br>
+                        Maslak 34469 Sariyer/Istanbul<br>
+                    </address>
+                    <br>
+                    <button class="button button1" id="button1">Change the Address</button>
+                    <!-- <form id="addressForm" action="/ChangeAdress" method = "post" display="none"> -->
+                    <textarea id="newAdd" rows = "5" cols = "60" name = "description">defaultAddress</textarea>
+                    <!-- defaultAdressi her seferinde güncelle  -->
+                    <button class="button button1" id="button2" display="none">Ok</button>
+                    <!-- </form> -->
 
-						<br>
-                        <br>
-                        <i class="fa fa-money"></i> Payment Menu
-<br><br>
-                        <div class="vertical-menu">
-                            <a href="#" class="active">Online</a>
-                            <a href="#">Cash</a>
-                        </div>
-
-                    </div>
-
-                    <div class="col-50">
-                        <h3>Payment</h3>
-                        <label for="fname">Accepted Cards</label>
-                        <div class="icon-container">
-                            <i class="fa fa-cc-visa" style="color:darkred;"></i>
-                            <i class="fa fa-cc-amex" style="color:darkred;"></i>
-                            <i class="fa fa-cc-mastercard" style="color:darkred;"></i>
-                            <i class="fa fa-cc-discover" style="color:darkred;"></i>
-                        </div>
-                        <label for="cname">Name on Card</label>
-                        <input type="text" id="cname" name="cardname" placeholder="Name Surname">
-                        <label for="ccnum">Credit card number</label>
-                        <input type="text" id="ccnum" name="cardnumber" placeholder="XXXX-XXXX-XXXX-XXXX">
-                            <div class="col-30">
-                                <label for="expmonth">Expiry Month</label>
-								<select name="month" id="expmonth" placeholder="Month">
-								<option value ="1">01</option>
-								<option value ="2">02</option>
-								<option value ="3">03</option>
-								<option value ="4">04</option>
-								<option value ="5">05</option>
-								<option value ="6">06</option>
-								<option value ="7">07</option>
-								<option value ="8">08</option>
-								<option value ="9">09</option>
-								<option value ="10">10</option>
-								<option value ="11">11</option>
-								<option value ="12">12</option>
-								</select>
-                            </div>
-							<br/>
-                            <div class="col-30">
-                                <label for="selectYear">Exp Year</label>
-                                <select id ="selectYear" name="month" placeholder="Year">
-								<option value ="1">01</option>
-
-								</select>
-							</div>
-							<br/>
-							<div class="col-30">
-                                <label for="cvv">CVV</label>
-                                <input type="number" id="cvv" min="0" pattern=".{3,4}" name="cvv" placeholder="XXX" autocomplete="off" tabindex="8">
-                            </div>
+                    <br>
+                    <br>
+                    <i class="fa fa-money"></i> Payment Menu
+                    <br><br>
+                    <div class="btn-group">
+                        <button>Online</button>
+                        <button>Cash</button>
                     </div>
 
                 </div>
-                <label>
-                    <input type="checkbox" checked="checked" name="sameadr"> I accept the...
-                </label>
+
+                <div class="col-50">
+                    <h3>Payment</h3>
+                    <label for="fname">Accepted Cards</label>
+                    <div class="icon-container">
+                        <i class="fa fa-cc-visa" style="color:darkred;"></i>
+                        <i class="fa fa-cc-amex" style="color:darkred;"></i>
+                        <i class="fa fa-cc-mastercard" style="color:darkred;"></i>
+                        <i class="fa fa-cc-discover" style="color:darkred;"></i>
+                    </div>
+                    <label for="cname">Name on Card</label>
+                    <input type="text" id="cname" name="cardname" placeholder="Name Surname">
+                    <label for="ccnum">Credit card number</label>
+                    <input type="text" id="ccnum" name="cardnumber" placeholder="XXXX-XXXX-XXXX-XXXX">
+                    <div class="col-30">
+                        <label for="expmonth">Expiry Month</label>
+                        <select name="month" id="expmonth" placeholder="Month">
+                            <option value ="1">01</option>
+                            <option value ="2">02</option>
+                            <option value ="3">03</option>
+                            <option value ="4">04</option>
+                            <option value ="5">05</option>
+                            <option value ="6">06</option>
+                            <option value ="7">07</option>
+                            <option value ="8">08</option>
+                            <option value ="9">09</option>
+                            <option value ="10">10</option>
+                            <option value ="11">11</option>
+                            <option value ="12">12</option>
+                        </select>
+                    </div>
+                    <br/>
+                    <div class="col-30">
+                        <label for="selectYear">Expiry Year</label>
+                        <select id ="selectYear" name="month" placeholder="Year">
+                            <option value ="1">01</option>
+
+                        </select>
+                    </div>
+                    <br/>
+                    <div class="col-30">
+                        <label for="cvv">CVV</label>
+                        <input type="number" id="cvv" min="0" pattern=".{3,4}" name="cvv" placeholder="XXX" autocomplete="off" tabindex="8">
+                    </div>
+                </div>
+
+            </div>
+            <br>
+            <label>
+                <input type="checkbox" checked="checked" name="sameadr"> Acceptance of general terms and conditions
+            </label>
         </div>
     </div>
     <div class="col-25">
@@ -261,10 +282,10 @@
         var $button2 = $('#button2');
         var $button1 = $('#button1');
         var $selectYear = $('#selectYear');
-		
-		$newAdd.hide()
-		$button2.hide()
-		
+
+        $newAdd.hide()
+        $button2.hide()
+
         $button1.click(function () {
             $def_add.hide(); // document.getElementById("def_add").style.display= "none";
             $addressForm.show();
@@ -275,7 +296,7 @@
         })
 
         $button2.click(function () {
-			var $new_val = $newAdd.val();
+            var $new_val = $newAdd.val();
             $def_add.show();
             $def_add.text($new_val); // document.getElementById("def_add").innerHTML = document.getElementById("newAdd").value
             $newAdd.hide();
