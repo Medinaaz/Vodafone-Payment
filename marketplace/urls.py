@@ -12,9 +12,9 @@ urlpatterns = i18n_patterns(
     path('admin/', admin.site.urls),
     path('product/<slug:slug>/', ProductDetailsView.as_view(), name="product_details"),
     path('basket/', include('basket.urls')),
+    path('shipment/', include('shipment.urls')),
     path('listing/', include('listing.urls')),
     path('', IndexView.as_view(), name="homepage"),
-    path('shipment/', include('shipment.urls')),
 )
 
 if settings.DEBUG:
