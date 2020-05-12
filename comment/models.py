@@ -20,4 +20,4 @@ class Comment(models.Model):
 
     def __str__(self):
         name = self.author.__str__()
-        return f"{name} - {self.rate}"
+        return "{name} - {rate}".format(name=name, rate=self.rate)

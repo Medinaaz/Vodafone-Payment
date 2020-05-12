@@ -12,13 +12,7 @@ def get_product_image_path(instance, filename):
     extension = filename.split(".")[-1]
     file_name = instance.slug
     year = now().year
-    return f"products/{year}/{file_name}.{extension}"
-
-
-class StatusChoices(models.IntegerChoices):
-    DRAFT = 1, _("Draft")
-    PUBLIC = 2, _("Public")
-    HIDDEN = 3, _("Hidden")
+    return "products/{}/{}.{}".format(year, file_name, extension)
 
 
 class ProductCategory(models.Model):
@@ -42,6 +36,9 @@ class ProductCategory(models.Model):
 
 class Product(models.Model):
     """Product definition."""
+    STATUS_CHOICES = [ (1, "Draft"),
+    (2, "Public"),
+    (3, "Hidden")] 
     name = models.CharField(_("Name"), max_length=255, blank=False, null=False)
     slug = models.SlugField(_("Slug"), max_length=50, unique=True)
     category = models.ForeignKey(
@@ -53,7 +50,7 @@ class Product(models.Model):
     available_quantity = models.IntegerField(_("Available quantity"), default=0, null=True, blank=True)
     barcode = models.CharField(_("Barcode"), max_length=20, null=True, blank=True)
     tags = models.ManyToManyField(Tag, verbose_name=_("Tags"), related_name="products", blank=True)
-    status = models.IntegerField(_("Status"), choices=StatusChoices.choices, default=StatusChoices.DRAFT)
+    status = models.IntegerField(max_length=1,choices=STATUS_CHOICES)
     created_at = models.DateTimeField(_("Created"), auto_now_add=True, editable=False)
     modified_at = models.DateTimeField(_("Modified"), auto_now=True, editable=False)
 

@@ -1,6 +1,6 @@
 from django.views.generic import TemplateView
 
-from product.models import Product, StatusChoices
+from product.models import Product
 
 
 class HomePageView(TemplateView):
@@ -9,7 +9,7 @@ class HomePageView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         products = Product.objects.filter(
-            status=StatusChoices.PUBLIC
+            status=2
         ).select_related("category").prefetch_related("images", "tags")
         context["products"] = products
         return context
