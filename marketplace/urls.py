@@ -14,6 +14,7 @@ urlpatterns = i18n_patterns(
     path('basket/', include('basket.urls')),
     path('shipment/', include('shipment.urls')),
     path('listing/', include('listing.urls')),
+    path('payment/', include('payment.urls', namespace='payment')),
     path('', IndexView.as_view(), name="homepage"),
 )
 
