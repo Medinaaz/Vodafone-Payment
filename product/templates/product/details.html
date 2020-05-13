@@ -5,7 +5,7 @@
 <div class="container" style="padding-top:5%">
     <div class="row justify-content-center">
         <div class="col-3">
-            <div id="productImages" class="carousel slide" data-ride="carousel">
+            <div id="productImages" class="carousel slide" data-ride="carousel" data-interval="false">
                 <ol class="carousel-indicators">
                     {% for image in product.images.all %}
                         <li data-target="#productImages" data-slide-to="{{ forloop.counter0 }}"
