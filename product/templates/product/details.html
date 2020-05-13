@@ -72,6 +72,7 @@
     </nav>
     <div class="tab-content" id="nav-tabContent">
         <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+        {% if comments %}
             {% for comment in comments %}
             <div class="media p-3">
                 <div class="media-body">
@@ -93,11 +94,19 @@
                             </div>
                             <p><small>{% if comment.author.is_registered %}{{ comment.author }}{% else %}{% trans "Anonymous" %}{% endif %}</small></p>
                         </div>
-
                     </div>
                 </div>
             </div>
             {% endfor %}
+        {% else %}
+            <div class="media p-3">
+                <div class="media-body">
+                    <div class="well well-lg bg-light rounded p-3" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2)">
+                        <p>{% trans "No comments added yet." %}</p>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
         </div>
         <!-- Add Comment -->
         <div class="tab-pane fade" id="nav-addComment" role="tabpanel" aria-labelledby="nav-profile-tab">
