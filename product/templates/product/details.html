@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load i18n humanize %}
+{% load i18n humanize thumbnail %}
 {% block title %}{{ product.name }}{% endblock %}
 {% block content %}
 <div class="container" style="padding-top:5%">
@@ -15,7 +15,9 @@
                 <div class="carousel-inner">
                     {% for image in product.images.all %}
                         <div class="carousel-item{% if forloop.first %} active{% endif %}">
-                            <img src="{{ image.image.url }}" class="d-block w-100" alt="{{ image.title }}">
+                            {% thumbnail image.image "350x350" crop="center" as im %}
+                            <img src="{{ im.url }}" class="d-block w-100" alt="{{ image.title }}">
+                            {% endthumbnail %}
                         </div>
                     {% endfor %}
                 </div>
