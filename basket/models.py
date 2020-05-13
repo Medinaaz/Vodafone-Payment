@@ -48,19 +48,6 @@ class Basket(models.Model):
         return self
 
 
-class Size(models.TextChoices):
-    NONE = 'N', _("None")
-    SMALL = 'S', _("Small")
-    MEDIUM = 'M', _("Medium")
-    LARGE = 'L', _("Large")
-
-
-class Color(models.TextChoices):
-    NONE = 'none', _("None")
-    BLACK = 'black', _("Black")
-    WHITE = 'white', _("White")
-
-
 class BasketItem(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -69,16 +56,9 @@ class BasketItem(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.IntegerField(_("Quantity"), default=1)
 
-    size = models.CharField(
-        max_length=4,
-        choices=Size.choices,
-        default=Size.NONE,
-    )
-    color = models.CharField(
-        max_length=16,
-        choices=Color.choices,
-        default=Color.NONE,
-    )
+    @property
+    def total_price(self):
+        return self.product.price * self.quantity
 
     class Meta:
         verbose_name = _("Basket item")
@@ -230,17 +210,14 @@ class Coupon(models.Model):
         self.save()
 
     def get_discount(self):
-        return {
-            "value": self.discount.value,
-            "is_percentage": self.discount.is_percentage
-        }
+        return self.discount.value
 
     def get_discounted_value(self, initial_value):
         discount = self.get_discount()
-        if discount['is_percentage']:
-            new_price = initial_value - ((initial_value * discount['value']) / 100)
+        if self.discount.is_percentage:
+            new_price = initial_value - ((initial_value * discount) / 100)
             new_price = new_price if new_price >= 0.0 else 0.0
         else:
-            new_price = initial_value - discount['value']
+            new_price = initial_value - discount
             new_price = new_price if new_price >= 0.0 else 0.0
         return new_price

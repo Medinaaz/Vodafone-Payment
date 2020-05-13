@@ -18,9 +18,10 @@ from .models import (
 
 @admin.register(BasketItem)
 class BasketItemAdmin(admin.ModelAdmin):
-    list_display = ('product', 'basket', 'size', 'color', 'created_at', 'updated_at')
-    fields = ('product', 'basket', 'size', 'color')
+    list_display = ('product', 'basket', 'quantity', 'created_at', 'updated_at')
+    fields = ('product', 'basket', 'quantity')
     readonly_fields = ('created_at', 'updated_at')
+    autocomplete_fields = ('product',)
 
 
 class BasketItemInline(admin.StackedInline):
@@ -31,9 +32,9 @@ class BasketItemInline(admin.StackedInline):
 
 @admin.register(Basket)
 class BasketAdmin(admin.ModelAdmin):
-    list_display = ('user', 'coupon_code', 'created_at', 'updated_at')
-    fields = ('user', 'coupon_code')
-    readonly_fields = ('created_at', 'updated_at')
+    list_display = ('user', 'coupon_code', 'total', 'created_at', 'updated_at')
+    fields = ('user', 'coupon_code', 'total')
+    readonly_fields = ('total', 'created_at', 'updated_at')
     inlines = (BasketItemInline,)
 
 
