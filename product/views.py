@@ -21,6 +21,6 @@ class ProductDetailsView(TemplateView):
         context["product_category"] = product.category
         context["main_properties"] = product.properties.filter(is_main_property=True).select_related("option")
         context["additional_properties"] = product.properties.all().select_related("option")
-        context["comments"] = product.comments.filter(verified=True)
+        context["comments"] = product.comments.filter(verified=True, comment__isnull=False).exclude(comment="")
         context["comment_form"] = CommentForm()
         return context
