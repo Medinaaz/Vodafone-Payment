@@ -1,5 +1,9 @@
+import sys
+from io import BytesIO
 from typing import Union
 
+from PIL import Image, ExifTags
+from django.core.files.uploadedfile import InMemoryUploadedFile
 from django.db import models
 from django.db.models import Avg
 from django.utils.timezone import now
@@ -97,6 +101,40 @@ class ProductImages(models.Model):
 
     def __str__(self) -> str:
         return "{title} for {product}".format(title=self.title, product=self.product.name)
+
+    def save(self, *args, **kwargs):
+        im = Image.open(self.image)
+        output = BytesIO()
+        min_size = 256
+        orientation = 0
+        # find rotation exif tag
+        for orientation in ExifTags.TAGS.keys():
+            if ExifTags.TAGS[orientation] == 'Orientation':
+                break
+        try:
+            exif = dict(im._getexif().items())
+            if exif[orientation] == 3:
+                im = im.rotate(180, expand=True)
+            elif exif[orientation] == 6:
+                im = im.rotate(270, expand=True)
+            elif exif[orientation] == 8:
+                im = im.rotate(90, expand=True)
+        except (AttributeError, KeyError, IndexError):
+            pass
+        im = im.convert("RGB")
+        x, y = im.size
+        size = max(min_size, x, y)
+        new_im = Image.new('RGB', (size, size), (255, 255, 255))
+        new_im.paste(im, (int((size - x) / 2), int((size - y) / 2)))
+        new_im.save(output, format='JPEG', quality=100)
+        output.seek(0)
+        self.image = InMemoryUploadedFile(
+            output, 'ImageField', "%s.jpg" % self.image.name.split('.')[0],
+            'image/jpeg', sys.getsizeof(output), None
+        )
+        im.close()
+        new_im.close()
+        super().save(*args, **kwargs)
 
 
 class PropertyOption(models.Model):
