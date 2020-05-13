@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load i18n humanize thumbnail %}
+{% load i18n static humanize thumbnail %}
 {% block title %}{{ product.name }}{% endblock %}
 {% block content %}
 <div class="container" style="padding-top:5%">
@@ -16,7 +16,9 @@
                     {% for image in product.images.all %}
                         <div class="carousel-item{% if forloop.first %} active{% endif %}">
                             {% thumbnail image.image "350x350" crop="center" as im %}
-                            <img src="{{ im.url }}" class="d-block w-100" alt="{{ image.title }}">
+                            <a href="{{ image.image.url }}" data-lightbox="roadtrip" data-title="{{ image.title }}">
+                                <img src="{{ im.url }}" class="d-block w-100 carousel-image" alt="{{ image.title }}">
+                            </a>
                             {% endthumbnail %}
                         </div>
                     {% endfor %}
@@ -177,4 +179,8 @@
   }, false)
 
 </script>
+<script type="text/javascript" src="{% static "js/lightbox.min.js" %}"></script>
+{% endblock %}
+{% block extraHead %}
+<link href="{% static "css/lightbox.min.css" %}" rel="stylesheet">
 {% endblock %}
