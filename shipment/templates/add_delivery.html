@@ -1,0 +1,60 @@
+
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}Shipment{% endblock %}
+{% block content %}
+
+    <style>
+    input[type=text], select, textarea{
+    width: 100%;
+     padding: 12px;
+    border: 1px solid #ccc;
+     border-radius: 4px;
+        box-sizing: border-box;
+    resize: vertical;
+}input[type=email], select, textarea{
+    width: 100%;
+     padding: 12px;
+    border: 1px solid #ccc;
+     border-radius: 4px;
+        box-sizing: border-box;
+    resize: vertical;
+}input[type=text], select, textarea{
+    width: 100%;
+     padding: 12px;
+    border: 1px solid #ccc;
+     border-radius: 4px;
+        box-sizing: border-box;
+    resize: vertical;
+}
+    </style>
+<div class="container" style="text-align:center;width:50%;margin-top:25px">
+        <div class="block-heading">
+            <h2 class="text-info">Shipment</h2>
+        </div>
+        <div class="content" >
+            <form method="POST" action="/en/shipment/save/" class="save-shipment">{% csrf_token %}
+                <select>
+                    <option value="0"> New Shipment Address</option>
+                    {% for shipment in shipment_list %}
+                        <option value="{{ shipment.address_id.value }}"> {{ shipment.address_name.value}} </option>
+                    {% endfor %}
+                </select>
+                <select>
+                    <option value="0"> New Billing Address</option>
+                    {% for bill in shipment_list %}
+                        <option value="{{ bill.address_id.value }}"> {{ bill.address_name.value }} </option>
+                    {% endfor %}
+                </select>
+                <button class="btn btn-primary btn-block btn-lg" style="margin:auto;background-color:green;width:40%;margin-top:25px;" type="submit">Confirm</button>
+            </form>
+        </div>
+
+</div>
+<label id="ib7o" class="label" style="width:0px;height:0px"></label>
+
+  <div class="cell" id="i8jb5n" style="width:0px;height:0px">
+  </div>
+
+
+{% endblock %}

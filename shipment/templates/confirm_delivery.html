@@ -11,7 +11,6 @@
                 </div>
                 <div class="content" >
     <form method="POST" action="/en/shipment/" class="save-shipment">{% csrf_token %}
-
         <label> Name: {{form.name.value}}</label><br/>
         <label> Surname: {{form.surname.value}}</label><br/>
         <label> Email: {{form.email.value}}</label><br/>

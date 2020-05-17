@@ -6,13 +6,13 @@ from shipment.models import Shipment
 from product.models import Product, StatusChoices
 from django.http import JsonResponse
 from django import forms
-from shipment.forms import ShipmentForm, BillInformationForm
+from shipment.forms import ShipmentForm
 
 
 def confirm_shipment(request):
+
     form = ShipmentForm(request.POST)
-    bill_form = BillInformationForm(request.POST)
-    return render(request,'confirm_delivery.html', {'form': form , 'bill_form': bill_form})  #
+    return render(request, 'confirm_delivery.html', {'form': form})
 
 
 def change_shipment(request):
@@ -21,8 +21,25 @@ def change_shipment(request):
         form = ShipmentForm(request.POST)
     else:
         form = ShipmentForm()
-    bill_form = save_bill(request)
-    return render(request, 'delivery.html', {'form': form, 'bill_form': bill_form})
+    return render(request, 'delivery.html', {'form': form})
+
+
+def add_shipment(request):
+    shipment_list = []
+    address_form = ShipmentForm()
+    bill_form = ShipmentForm()
+    ctr = 1
+    for element in Shipment.objects.filter(user=request.user).values():
+        print(element)
+        form_element = ShipmentForm(element)
+        print(form_element)
+        shipment_list += [form_element]
+        ctr += 1
+
+    print(shipment_list)
+    return render(request, 'add_delivery.html', {"shipment_list": shipment_list,
+                                                 "address_form": address_form,
+                                                 "bill_form": bill_form})
 
 
 def save_shipment(request):
@@ -35,22 +52,13 @@ def save_shipment(request):
             shipment_form.save()
 
     else:
-
+        main_dict = {}
+        ctr = 1
+        for element in Shipment.objects.filter(user=request.user).values():
+            form_element = ShipmentForm(element)
+            main_dict["shipment_form" + str(ctr)] = form_element
+            ctr += 1
+        print(main_dict)
         form = ShipmentForm()
 
-    bill_form = save_bill(request)
-
-    return render(request, 'delivery.html', {'form': form, 'bill_form': bill_form})  #
-
-
-def save_bill(request):
-    if request.method == "POST":
-        form = BillInformationForm(request.POST)
-        if form.is_valid():
-            bill_form = form.save(commit=False)
-            bill_form.user = request.user
-            bill_form.save()
-    else:
-        bill_form = BillInformationForm()
-
-    return bill_form
+    return render(request, 'delivery.html', main_dict)
