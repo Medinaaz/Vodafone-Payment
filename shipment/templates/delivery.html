@@ -4,6 +4,30 @@
 {% block title %}Shipment{% endblock %}
 {% block content %}
 
+    <style>
+    input[type=text], select, textarea{
+    width: 100%;
+     padding: 12px;
+    border: 1px solid #ccc;
+     border-radius: 4px;
+        box-sizing: border-box;
+    resize: vertical;
+}input[type=email], select, textarea{
+    width: 100%;
+     padding: 12px;
+    border: 1px solid #ccc;
+     border-radius: 4px;
+        box-sizing: border-box;
+    resize: vertical;
+}input[type=text], select, textarea{
+    width: 100%;
+     padding: 12px;
+    border: 1px solid #ccc;
+     border-radius: 4px;
+        box-sizing: border-box;
+    resize: vertical;
+}
+    </style>
 <div class="container" style="text-align:center;width:50%;margin-top:25px">
                 <div class="block-heading">
                     <h2 class="text-info">Shipment</h2>
@@ -26,8 +50,10 @@
         <div >{{form.neighborhood}}</div>
         <label>Others</label>
         <div >{{form.others}}</div>
-        <button class="btn btn-primary btn-block btn-lg" style="margin:auto;width:40%;margin-top:25px;" type="submit">Confirm</button>
-
+        <label>Extra Notes</label>
+        <div >{{form.extra}}</div>
+        <button class="btn btn-primary btn-block btn-lg" style="margin:auto;background-color:green;width:40%;margin-top:25px;" type="submit">Confirm</button>
+        {{ bill_form.as_p }}
                                 </form>
                             </div>
 

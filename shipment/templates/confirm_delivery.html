@@ -20,9 +20,10 @@
         <label> Neighborhood: {{form.neighborhood.value}}</label><br/>
         <label> District: {{form.district.value}}</label><br/>
         <label> Additional Notes: {{form.others.value}}</label><br/>
-        <button type="submit" class="btn btn-primary btn-block btn-lg" style="border: 0px;background-color:green;display: inline-block;width:auto;margin-top:25px;" formaction="/en/payment/">Confirm</button>
+        <button type="submit" class="btn btn-primary btn-block btn-lg" style="border: 0px;background-color:green;display: inline-block;width:auto;margin-top:25px;" formaction="/en/shipment/">Confirm</button>
         <button type="submit" class="btn btn-primary btn-block btn-lg" style="border: 0px;background-color:red;display: inline-block;width:auto;margin-top:25px;" formaction="/en/shipment/change/">Back</button>
-            <div style="display:none;">{{ form.as_p }}</div>
+            {{ form.as_p }}
+            {{ bill_form.as_p }}
     </form>
                     </div>
 <label id="ib7o" class="label"></label>
