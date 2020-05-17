@@ -1,0 +1,25 @@
+:root {
+    --primary-color: rgb(230, 0, 0);
+    --secondary-color: rgb(74, 77, 78);
+}
+
+.text-info, .summary > h4:last-of-type, a {
+    color: var(--primary-color) !important;
+}
+
+.summary h4:first-of-type {
+    border-top: 1px solid var(--secondary-color) !important;
+}
+
+.btn-primary {
+    background-color: var(--primary-color) !important;
+    border: none;
+}
+
+.btn-secondary, .summary {
+    background-color: var(--secondary-color) !important;
+}
+
+.btn-secondary, .summary > h3 {
+    color: white !important;
+}
