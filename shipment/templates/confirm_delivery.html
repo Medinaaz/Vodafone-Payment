@@ -1,0 +1,36 @@
+
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}Confirm address{% endblock %}
+{% block content %}
+
+
+<div class="container" style="text-align:center;margin-top:170px;margin-bottom:170px;">
+                <div class="block-heading">
+                    <h2 class="text-info">Confirm Address</h2>
+                </div>
+                <div class="content" >
+    <form method="POST" action="/en/shipment/" class="save-shipment">{% csrf_token %}
+
+        <label> Name: {{form.name.value}}</label><br/>
+        <label> Surname: {{form.surname.value}}</label><br/>
+        <label> Email: {{form.email.value}}</label><br/>
+        <label> Phone Number: {{form.phone.value}}</label><br/>
+        <label> City: {{form.city.value}}</label><br/>
+        <label> Neighborhood: {{form.neighborhood.value}}</label><br/>
+        <label> District: {{form.district.value}}</label><br/>
+        <label> Additional Notes: {{form.others.value}}</label><br/>
+        <button type="submit" class="btn btn-primary btn-block btn-lg" style="border: 0px;background-color:green;display: inline-block;width:auto;margin-top:25px;" formaction="/en/payment/">Confirm</button>
+        <button type="submit" class="btn btn-primary btn-block btn-lg" style="border: 0px;background-color:red;display: inline-block;width:auto;margin-top:25px;" formaction="/en/shipment/change/">Back</button>
+            <div style="display:none;">{{ form.as_p }}</div>
+    </form>
+                    </div>
+<label id="ib7o" class="label"></label>
+
+  <div class="cell" id="i8jb5n">
+  </div>
+</div>
+
+
+
+{% endblock %}
