@@ -5,5 +5,6 @@ from shipment.models import Shipment
 
 @admin.register(Shipment)
 class ShipmentAdmin(admin.ModelAdmin):
-    list_display = ("address_id", "user", "name", "surname", "email", "phone", "city", "district", "neighborhood", "others", "extra")
+    list_display = ("address_id", "address_name", "selection", "user", "name", "surname", "email",
+                    "phone", "city", "district", "neighborhood", "others", "extra")
 
