@@ -1,146 +1,194 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-    .vertical-menu {
-        width: 200px;
-        height: 150px;
-        overflow-y: auto;
-    }
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .vertical-menu {
+            width: 200px;
+            height: 150px;
+            overflow-y: auto;
+        }
 
-    h3 {
-    color : black;
-    }
-    h2 {
-    color : black;
-    }
+        h3 {
+            color: black;
+        }
 
-    .btn-group button {
-        background-color: crimson;
-        border-radius: 5px;
-        border: 2px solid white;
-        padding: 10px 24px;
-        color: white;
-        cursor: pointer;
-        width: 47%;
-        display: block; /* Make the buttons appear below each other */
-    }
+        h2 {
+            color: black;
+        }
 
-    .btn-group button:not(:last-child) {
-        border-bottom: none; /* Prevent double borders */
-    }
+        .btn-group button {
+            background-color: crimson;
+            border-radius: 5px;
+            border: 2px solid white;
+            padding: 10px 24px;
+            color: white;
+            cursor: pointer;
+            width: 47%;
+            display: block; /* Make the buttons appear below each other */
+        }
 
-    /* Add a background color on hover */
-    .btn-group button:hover {
-        background-color: crimson;
-        cursor: pointer;
-        cursor: hand;
-        border-radius: 5px;
-    }
-    .button1 {
-        background-color: crimson;
-        border: none;
-        color: white;
-        border-radius: 5px;
-        padding-left: 10px;
-        padding: 8px 40px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-        margin: 4px 2px;
-        cursor: pointer;
-    }
+        .btn-group button:not(:last-child) {
+            border-bottom: none; /* Prevent double borders */
+        }
 
-    * {
-        box-sizing: border-box;
-    }
+        /* Add a background color on hover */
+        .btn-group button:hover {
+            background-color: crimson;
+            cursor: pointer;
+            cursor: hand;
+            border-radius: 5px;
+        }
 
-    .row {
-        display: -ms-flexbox;
-        display: flex;
-        -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-        margin: 0 -16px;
-    }
+        .button1 {
+            background-color: crimson;
+            border: none;
+            color: white;
+            border-radius: 5px;
+            padding-left: 10px;
+            padding: 8px 40px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
 
-    .col-25 {
-        -ms-flex: 25%;
-        flex: 25%;
-    }
+        * {
+            box-sizing: border-box;
+        }
 
-    .col-50 {
-        -ms-flex: 50%;
-        flex: 50%;
-    }
-
-    .col-75 {
-        -ms-flex: 75%;
-        flex: 75%;
-    }
-
-    .col-25,
-    .col-50,
-    .col-75 {
-        padding: 0 16px;
-    }
-
-
-    input[type=text] {
-        width: 100%;
-        margin-bottom: 20px;
-        padding: 12px;
-        border: 1px solid #ccc;
-        border-radius: 3px;
-    }
-
-    label {
-        color: grey;
-        margin-bottom: 10px;
-        display: block;
-    }
-
-    .icon-container {
-        margin-bottom: 20px;
-        padding: 7px 0;
-        font-size: 24px;
-    }
-
-    .btn {
-        background-color: crimson;
-        color: white;
-        padding: 12px;
-        margin: 10px 0;
-        border: none;
-        width: 100%;
-        border-radius: 3px;
-        cursor: pointer;
-        font-size: 17px;
-    }
-
-    .btn:hover {
-        background-color: crimson;
-    }
-
-    hr {
-        border: 1px solid lightgrey;
-    }
-
-    span.price {
-        float: right;
-        color: grey;
-    }
-
-    @media (max-width: 800px) {
         .row {
-            flex-direction: column-reverse;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            margin: 0 -16px;
         }
+
         .col-25 {
-            margin-bottom: 20px;
+            -ms-flex: 25%;
+            flex: 25%;
         }
-    }
-</style>
+
+        .col-50 {
+            -ms-flex: 50%;
+            flex: 50%;
+        }
+
+        .col-75 {
+            -ms-flex: 75%;
+            flex: 75%;
+        }
+
+        .col-25,
+        .col-50,
+        .col-75 {
+            padding: 0 16px;
+        }
+
+
+        input[type=text] {
+            width: 100%;
+            margin-bottom: 20px;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        label {
+            color: grey;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .icon-container {
+            margin-bottom: 20px;
+            padding: 7px 0;
+            font-size: 24px;
+        }
+
+        /* The Modal (background) */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            padding-top: 100px; /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0); /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+        }
+
+        /* Modal Content */
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 10px solid #888;
+            width: 35%;
+            height: 70%;
+            letter-spacing: 2px;
+            text-align: center;
+            line-height: 2;
+            font-size: 17px;
+            color: #1acd4c;
+        }
+
+        /* The Close Button */
+        .close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .btn {
+            background-color: crimson;
+            color: white;
+            padding: 12px;
+            margin: 10px 0;
+            border: none;
+            width: 100%;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 17px;
+        }
+
+        .btn:hover {
+            background-color: crimson;
+        }
+
+        hr {
+            border: 1px solid lightgrey;
+        }
+
+        span.price {
+            float: right;
+            color: grey;
+        }
+
+        @media (max-width: 800px) {
+            .row {
+                flex-direction: column-reverse;
+            }
+
+            .col-25 {
+                margin-bottom: 20px;
+            }
+        }
+    </style>
 </head>
 <div class="row">
     <div class="col-75">
@@ -156,8 +204,8 @@
                     <input type="text" id="fname" name="firstname" placeholder="Name Surname">
                     <label style="color:grey" for="email"><i class="fa fa-envelope"></i> Email</label>
                     <input type="text" id="email" name="email" placeholder="something@example.com">
-                    <div  style="color:grey"><i class="fa fa-address-card-o"></i> Address</div>
-                    <address id = "def_add">
+                    <div style="color:grey"><i class="fa fa-address-card-o"></i> Address</div>
+                    <address id="def_add">
                         ITU International Office<br>
                         Ayazaga Campus<br>
                         Registrator's Office Building<br>
@@ -165,7 +213,7 @@
                     </address>
                     <button class="button button1" id="button1">Change the Address</button>
                     <!-- <form id="addressForm" action="/ChangeAdress" method = "post" display="none"> -->
-                    <textarea id="newAdd" rows = "5" cols = "60" name = "description">defaultAddress</textarea>
+                    <textarea id="newAdd" rows="5" cols="60" name="description">defaultAddress</textarea>
                     <!-- defaultAdressi her seferinde güncelle  -->
                     <button class="button button1" id="button2" display="none">Ok</button>
                     <!-- </form> -->
@@ -197,37 +245,38 @@
                     <div class="col-30">
                         <label for="expmonth">Expiry Month</label>
                         <select name="month" id="expmonth" placeholder="Month">
-                            <option value ="1">01</option>
-                            <option value ="2">02</option>
-                            <option value ="3">03</option>
-                            <option value ="4">04</option>
-                            <option value ="5">05</option>
-                            <option value ="6">06</option>
-                            <option value ="7">07</option>
-                            <option value ="8">08</option>
-                            <option value ="9">09</option>
-                            <option value ="10">10</option>
-                            <option value ="11">11</option>
-                            <option value ="12">12</option>
+                            <option value="1">01</option>
+                            <option value="2">02</option>
+                            <option value="3">03</option>
+                            <option value="4">04</option>
+                            <option value="5">05</option>
+                            <option value="6">06</option>
+                            <option value="7">07</option>
+                            <option value="8">08</option>
+                            <option value="9">09</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
                         </select>
                     </div>
                     <br/>
                     <div class="col-30">
                         <label for="selectYear">Expiry Year</label>
-                        <select id ="selectYear" name="month" placeholder="Year">
-                            <option value ="1">01</option>
+                        <select id="selectYear" name="month" placeholder="Year">
+                            <option value="1">01</option>
 
                         </select>
                     </div>
                     <br/>
                     <div class="col-30">
                         <label for="cvv">CVV</label>
-                        <input type="number" id="cvv" min="0" pattern=".{3,4}" name="cvv" placeholder="XXX" autocomplete="off" tabindex="8">
+                        <input type="number" id="cvv" min="0" pattern=".{3,4}" name="cvv" placeholder="XXX"
+                               autocomplete="off" tabindex="8">
                     </div>
                 </div>
 
             </div>
-			
+
             <br>
             <label>
                 <input type="checkbox" checked="checked" name="sameadr"> Acceptance of general terms and conditions
@@ -245,17 +294,60 @@
             <p>Shipping<span class="price">$0.0</span></p>
             <hr>
             <p>Total <span class="price" style="color:black"><b>${{ total }}</b></span></p>
-            <button class="button button1">PAY</button>
+            <button id="pay" class="button button1">PAY</button>
+
 
         </div>
     </div>
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
 
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <br>
+            <p> THANK YOU!</p>
+            <img src="icon.png" height="120" width="120">
+            <br>
+            <p style="font-size:22px;color: black;">${{ total }}</p>
+            <p style="color: black">YOUR ORDER HAS BEEN CONFIRMED</p>
+            <p style="font-size:15px;">A RECEIPT WAS SENT TO YOUR EMAIL </p>
+        </div>
+
+    </div>
 
 </div>
 <!--<script src="jquery-3.5.1.js"></script>-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
-    $(document).ready(function() {
+    // Get the modal
+    var modal = document.getElementById("myModal");
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("pay");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks the button, open the modal
+    btn.onclick = function () {
+        modal.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
+<script>
+    $(document).ready(function () {
         var $def_add = $('#def_add'); // document.getElementById("def_add")
         var $addressForm = $('#addressForm');
         var $newAdd = $('#newAdd');
@@ -286,10 +378,11 @@
 
         })
 
-        let options = ``;``
+        let options = ``;
+        ``
         let start = 2020;
         let end = 2055;
-        for(let year = start ; year <=end; year++){
+        for (let year = start; year <= end; year++) {
             options += `<option>${year}</option>`
         }
         $selectYear.html(options);
