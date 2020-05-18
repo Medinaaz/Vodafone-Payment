@@ -14,11 +14,11 @@
         }
 
         h2 {
-            color: black;
+            color: #4a4d07;
         }
 
         .btn-group button {
-            background-color: crimson;
+            background-color: #e60000;
             border-radius: 5px;
             border: 2px solid white;
             padding: 10px 24px;
@@ -34,14 +34,14 @@
 
         /* Add a background color on hover */
         .btn-group button:hover {
-            background-color: crimson;
+            background-color: #e60000;
             cursor: pointer;
             cursor: hand;
             border-radius: 5px;
         }
 
         .button1 {
-            background-color: crimson;
+            background-color: #e60000;
             border: none;
             color: white;
             border-radius: 5px;
@@ -53,6 +53,38 @@
             font-size: 16px;
             margin: 4px 2px;
             cursor: pointer;
+        }
+        .button_credit_card {
+            background-color: #e60000;
+            border: none;
+            color: white;
+            padding-left: 10px;
+            padding: 8px 40px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+        .button_credit_card:focus{
+        	background-color:  #E9967A;
+        }
+        .button_cash {
+            background-color: #e60000;
+            border: none;
+            color: white;
+            padding-left: 10px;
+            padding: 8px 40px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+        .button_cash:focus{
+        	background-color: #E9967A ;
         }
 
         * {
@@ -98,7 +130,7 @@
         }
 
         label {
-            color: grey;
+            color: #4a4d07;
             margin-bottom: 10px;
             display: block;
         }
@@ -155,7 +187,7 @@
         }
 
         .btn {
-            background-color: crimson;
+            background-color: #e60000;
             color: white;
             padding: 12px;
             margin: 10px 0;
@@ -167,16 +199,16 @@
         }
 
         .btn:hover {
-            background-color: crimson;
+            background-color: #e60000;
         }
 
         hr {
-            border: 1px solid lightgrey;
+            border: 1px solid light#4a4d07;
         }
 
         span.price {
             float: right;
-            color: grey;
+            color: #4a4d07;
         }
 
         @media (max-width: 800px) {
@@ -194,56 +226,51 @@
     <div class="col-75">
         <div class="container" style="
         padding: 5px 20px 15px 20px;
-        border: 1px solid lightgrey;
+        border: 1px solid light#4a4d07;
         border-radius: 3px;">
 
             <div class="row">
                 <div class="col-50">
                     <h2>Billing Address</h2>
-                    <label style="color:grey" for="fname"><i class="fa fa-user"></i> Full Name</label>
+                    <label style="color:#4a4d07" for="fname"><i class="fa fa-user"></i> Full Name</label>
                     <input type="text" id="fname" name="firstname" placeholder="Name Surname">
-                    <label style="color:grey" for="email"><i class="fa fa-envelope"></i> Email</label>
+                    <label style="color:#4a4d07" for="email"><i class="fa fa-envelope"></i> Email</label>
                     <input type="text" id="email" name="email" placeholder="something@example.com">
-                    <div style="color:grey"><i class="fa fa-address-card-o"></i> Address</div>
+                    <div style="color:#4a4d07"><i class="fa fa-address-card-o"></i> Address</div>
                     <address id="def_add">
                         ITU International Office<br>
                         Ayazaga Campus<br>
                         Registrator's Office Building<br>
                         Maslak 34469 Sariyer/Istanbul<br>
                     </address>
-                    <button class="button button1" id="button1">Change the Address</button>
-                    <!-- <form id="addressForm" action="/ChangeAdress" method = "post" display="none"> -->
-                    <textarea id="newAdd" rows="5" cols="60" name="description">defaultAddress</textarea>
-                    <!-- defaultAdressi her seferinde güncelle  -->
-                    <button class="button button1" id="button2" display="none">Ok</button>
-                    <!-- </form> -->
-
+                    <button onclick="window.location.href = '/tr/shipment/'" class="button button1" id="button2" type="button">Change the Address</button>
+                    
                     <br>
                     <br>
-                    <i class="fa fa-money"></i> Payment Menu
+                    <div style="color:#4a4d07"><i class="fa fa-money"></i> Payment Menu</div>
                     <br><br>
                     <div class="btn-group">
-                        <button>Credit Card</button>
-                        <button>Pay on Delivery</button>
+                        <button class = "button button_credit_card" id="button_credit_card">Credit Card</button>
+                        <button class = "button button_cash" id = "button_cash">Pay on Delivery</button>
                     </div>
 
                 </div>
 
                 <div class="col-50">
-                    <h3>Payment</h3>
-                    <label for="fname">Accepted Cards</label>
-                    <div class="icon-container">
-                        <i class="fa fa-cc-visa" style="color:crimson;"></i>
-                        <i class="fa fa-cc-amex" style="color:crimson;"></i>
-                        <i class="fa fa-cc-mastercard" style="color:crimson;"></i>
-                        <i class="fa fa-cc-discover" style="color:crimson;"></i>
+                    <h3 id="pay_">Payment</h3>
+                    <label for="fname" id="accepted_cards">Accepted Cards</label>
+                    <div class="icon-container" id="label_container">
+                        <i class="fa fa-cc-visa" style="color:#e60000;"></i>
+                        <i class="fa fa-cc-amex" style="color:#e60000;"></i>
+                        <i class="fa fa-cc-mastercard" style="color:#e60000;"></i>
+                        <i class="fa fa-cc-discover" style="color:#e60000;"></i>
                     </div>
-                    <label for="cname">Name on Card</label>
-                    <input type="text" id="cname" name="cardname" placeholder="Name Surname">
-                    <label for="ccnum">Credit card number</label>
-                    <input type="text" id="ccnum" name="cardnumber" placeholder="XXXX-XXXX-XXXX-XXXX">
+                    <label for="cname" id="name_on_card">Name on Card</label>
+                    <input type="text" id="cname" name="cardname" placeholder="Name Surname" autocomplete="off" required>
+                    <label for="ccnum" id="credit_card_number">Credit card number</label>
+                    <input type="text" id="ccnum" name="cardnumber" placeholder="XXXX-XXXX-XXXX-XXXX" autocomplete="off" required>
                     <div class="col-30">
-                        <label for="expmonth">Expiry Month</label>
+                        <label for="expmonth" id="expiry_m">Expiry Month</label>
                         <select name="month" id="expmonth" placeholder="Month">
                             <option value="1">01</option>
                             <option value="2">02</option>
@@ -261,17 +288,17 @@
                     </div>
                     <br/>
                     <div class="col-30">
-                        <label for="selectYear">Expiry Year</label>
-                        <select id="selectYear" name="month" placeholder="Year">
+                        <label for="selectYear" id="expiry_y">Expiry Year</label>
+                        <select id="selectYear" name="year" placeholder="Year" >
                             <option value="1">01</option>
 
                         </select>
                     </div>
                     <br/>
                     <div class="col-30">
-                        <label for="cvv">CVV</label>
+                        <label for="cvv" id="cvv_num">CVV</label>
                         <input type="number" id="cvv" min="0" pattern=".{3,4}" name="cvv" placeholder="XXX"
-                               autocomplete="off" tabindex="8">
+                               autocomplete="off" required>
                     </div>
                 </div>
 
@@ -279,16 +306,16 @@
 
             <br>
             <label>
-                <input type="checkbox" checked="checked" name="sameadr"> Acceptance of general terms and conditions
+                <input type="checkbox" checked="checked" name="sameadr"> Acceptance of general terms and conditions.
             </label>
         </div>
     </div>
     <div class="col-25">
-        <div class="container" style="color:grey;
+        <div class="container" style="color:#4a4d07;
         padding: 5px 20px 15px 20px;
-        border: 1px solid lightgrey;
+        border: 1px solid light#4a4d07;
         border-radius: 3px;">
-            <h2>Cart <span class="price" style="color:grey;"><i class="fa fa-shopping-cart"></i></span></h2>
+            <h2>Cart <span class="price" style="color:#4a4d07;"><i class="fa fa-shopping-cart"></i></span></h2>
             <p>Subtotal <span class="price">${{ subtotal }}</span></p>
             <p>Discount<span class="price">${{ discount }}</span></p>
             <p>Shipping<span class="price">$0.0</span></p>
@@ -348,33 +375,59 @@
 </script>
 <script>
     $(document).ready(function () {
-        var $def_add = $('#def_add'); // document.getElementById("def_add")
-        var $addressForm = $('#addressForm');
         var $newAdd = $('#newAdd');
         var $button2 = $('#button2');
         var $button1 = $('#button1');
         var $selectYear = $('#selectYear');
+        var $label_container = $('#label_container');
+        var $button_credit_card = $('#button_credit_card');
+        var $button_cash = $('#button_cash');
+        var $accepted_cards = $('#accepted_cards');
+        var $name_on_card = $('#name_on_card');
+        var $cname = $('#cname');
+        var $ccnum = $('#ccnum');
+        var $expiry_m = $('#expiry_m');
+        var $expiry_y = $('#expiry_y');
+        var $expmonth = $('#expmonth');
+        var $year = $('#year');
+        var $selectYear = $('#selectYear');
+        var $credit_card_number = $('#credit_card_number');
+        var $cvv = $('#cvv');
+        var $cvv_num = $('#cvv_num');
+        var $pay_ = $('#pay_');
 
-        $newAdd.hide()
-        $button2.hide()
-
-        $button1.click(function () {
-            $def_add.hide(); // document.getElementById("def_add").style.display= "none";
-            $addressForm.show();
-            $newAdd.show();
-            $button2.show();
-            $button1.hide();
+        $button_credit_card.click(function (){
+        	$label_container.show();
+        	$accepted_cards.show();
+        	$name_on_card.show();
+        	$cname.show();
+        	$ccnum.show();
+        	$expiry_m.show();
+        	$expiry_y.show();
+        	$expmonth.show();
+        	$year.show();
+        	$selectYear.show();
+        	$credit_card_number.show();
+        	$cvv_num.show();
+        	$cvv.show();
+        	$pay_.show();
 
         })
-
-        $button2.click(function () {
-            var $new_val = $newAdd.val();
-            $def_add.show();
-            $def_add.text($new_val); // document.getElementById("def_add").innerHTML = document.getElementById("newAdd").value
-            $newAdd.hide();
-            $button1.show();
-            $button2.hide();
-            $addressForm.hide();
+        $button_cash.click(function (){
+        	$label_container.hide();
+        	$accepted_cards.hide();
+        	$name_on_card.hide();
+        	$cname.hide();
+        	$ccnum.hide();
+        	$expiry_m.hide();
+        	$expiry_y.hide();
+        	$expmonth.hide();
+        	$year.hide();
+        	$selectYear.hide();
+        	$credit_card_number.hide();
+        	$cvv.hide();
+        	$cvv_num.hide();
+        	$pay_.hide();
 
         })
 
