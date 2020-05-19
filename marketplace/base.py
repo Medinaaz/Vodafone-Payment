@@ -20,6 +20,7 @@ INSTALLED_APPS = [
     'listing',
     'shipment',
     'payment',
+    'django_inlinecss'
 ]
 
 MIDDLEWARE = [
