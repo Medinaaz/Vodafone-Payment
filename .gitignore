@@ -107,3 +107,6 @@ db.sqlite3
 
 # PyCharm files
 .idea/
+
+# Executable (used locally for listing test)
+*.exe

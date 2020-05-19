@@ -1,13 +1,14 @@
 {% extends "base.html" %} {% load static %} {% block title %}Index{% endblock %} {% block extraHead %}
+{% load i18n static humanize thumbnail %}
 
 <script type="text/javascript" src="{% static " js/jquery.min.js " %}"></script>
 <script type="text/javascript" src="{% static " bootstrap/js/bootstrap.min.js " %}"></script>
 <link rel='stylesheet' href='https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css'>
 <link rel="stylesheet" href="{% static 'listing/banner.css' %}">
-<link rel="stylesheet" href="{% static 'listing/index-style.css' %}"> {% endblock %} {% block content %}
-<div class="page-header">
+<link rel="stylesheet" href="{% static 'listing/index-style.css' %}">{% endblock %} {% block content %}
+<div  style="margin-bottom: 60px; margin-top: 60px;" class="page-header">
     <form class="example" action="{% url 'listing:search' %}">
-        <input type="text" placeholder="Search.." name="searchText">
+        <input type="text" placeholder="Ara..." name="searchText">
         <button type="submit">
             <i class="fa fa-search"></i>
         </button>
@@ -18,12 +19,16 @@
 
 <div class="card-carousel">
     {% for product in products %}
-    <div class="my-card card" style="width: 18rem;">
-        <img class="card-img-top" src={{product.main_image.image.url}} height="300" widht="auto" alt="Card image cap">
+    <div class="my-card card" style="width: 16rem; height: 20rem; background: white; border-color: #E60000">
+
+        {% thumbnail product.main_image.image "250x250" crop="center" as im %}
+            <img  style="margin-top: 5%; margin-bottom: 5%; margin-left: 25%; height: 8rem; width: 8rem; " src={{im.url}}   alt="{{ image.title }}"/>
+        {% endthumbnail %}
+
         <div class="card-body">
-            <h5 class="card-title text-primary text-center">{{product.name}}</h5>
-            <h5 class="card-title text-secondary text-center">₺ {{product.price}}</h5>
-            <a href="/product/{{ product.slug}}/"  method="get" class="btn btn-primary btn-lg text-center">View Details</a>
+            <h5 style="font-size: small;" class="card-title vodafone-red-text text-center">{{product.name}}</h5>
+            <h5 style="font-size: large;" class="card-title vodafone-grey-text text-center">₺ {{product.price}}</h5>
+            <a style="margin-top: 2%;" method="get"  href="/product/{{ product.slug}}/"  class="btn btn-lg text-center text-white vodafone-red-back">İncele</a>
         </div>
     </div>
     {% endfor %}
