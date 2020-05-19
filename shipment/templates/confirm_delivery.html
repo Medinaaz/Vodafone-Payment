@@ -4,7 +4,79 @@
 {% block title %}Confirm address{% endblock %}
 {% block content %}
 
+<style>
+  #pay {
+    border: 3px solid #3F3F3F;
+    color: #3F3F3F;
+    display: inline-block;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 24px;
+    margin-top: 25px;
+    padding: 12px 32px 12px 82px;
+    position: relative;
+    text-decoration: none;
+}
 
+#pay .label,
+#pay .icon-arrow {
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    perspective: 1000;
+}
+
+#pay .label {
+    display: inline-block;
+    transition: transform .5s cubic-bezier(0.86, 0, 0.07, 1);
+}
+
+#pay .icon-arrow {
+    fill: #3F3F3F;
+    height: 15px;
+    top: 17px;
+    transition: transform .5s cubic-bezier(0.86, 0, 0.07, 1), opacity .4s cubic-bezier(0.86, 0, 0.07, 1);
+    width: 35px;
+}
+
+#pay .icon-arrow.before {
+    left: 32px;
+    margin-right: 15px;
+    position: absolute;
+    transform-origin: left center;
+}
+
+#pay .icon-arrow.after {
+    margin-left: 15px;
+    opacity: 0;
+    position: absolute;
+    right: 32px;
+    transform: translateX(75%) scaleX(0.1);
+    transform-origin: right center;
+}
+
+#pay:hover .label {
+    transform: translateX(-52px);
+}
+
+#pay:hover .icon-arrow.before {
+    opacity: 0;
+    transform: translateX(-75%) scaleX(0.1);
+}
+
+#pay:hover .icon-arrow.after {
+    opacity: 1;
+    transform: translateX(0) scaleX(1);
+}
+
+#pay:active {
+    border-color: #FD6154;
+    color: #FD6154;
+}
+
+#pay:active .icon-arrow {
+    fill: #FD6154;
+}
+</style>
 <div class="container" style="text-align:center;margin-top:170px;margin-bottom:170px;">
                 <div class="block-heading">
                     <h2 class="text-info">Confirm Address</h2>
@@ -20,11 +92,30 @@
         <label> Neighborhood: {{form.neighborhood.value}}</label><br/>
         <label> District: {{form.district.value}}</label><br/>
         <label> Additional Notes: {{form.others.value}}</label><br/>
-        <button type="submit" class="btn btn-primary btn-block btn-lg" style="border: 0px;background-color:green;display: inline-block;width:auto;margin-top:25px;" formaction="/en/payment/">Confirm</button>
+        <button type="submit" class="btn btn-primary btn-block btn-lg" style="border: 0px;background-color:green;display: inline-block;width:auto;margin-top:25px;" formaction="/en/shipment/confirm/">Confirm</button>
         <button type="submit" class="btn btn-primary btn-block btn-lg" style="border: 0px;background-color:red;display: inline-block;width:auto;margin-top:25px;" formaction="/en/shipment/change/">Back</button>
             <div style="display:none;">{{ form.as_p }}</div>
     </form>
-                    </div>
+   
+    <a id="pay" href='{% url "payment:cart" %}'>
+      <svg class="icon-arrow before">
+          <use xlink:href="#arrow"></use>
+      </svg>
+      <span class="label">Place Order</span>
+      <svg class="icon-arrow after">
+          <use xlink:href="#arrow"></use>
+      </svg>
+  </a>
+  
+  <svg style="display: none;">
+    <defs>
+      <symbol id="arrow" viewBox="0 0 35 15">
+        <title>Arrow</title>
+        <path d="M27.172 5L25 2.828 27.828 0 34.9 7.071l-7.07 7.071L25 11.314 27.314 9H0V5h27.172z "/>
+      </symbol>
+    </defs>
+  </svg>
+</div>
 <label id="ib7o" class="label"></label>
 
   <div class="cell" id="i8jb5n">
