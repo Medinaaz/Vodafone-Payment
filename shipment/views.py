@@ -44,7 +44,6 @@ def add_shipment(request):
         form_element = ShipmentForm(element)
         shipment_list += [form_element]
 
-    print(shipment_list)
     if request.method == "POST":
         main_dict = dict(request.POST)
         dict_array = split_dict(main_dict)
@@ -76,7 +75,6 @@ def save_shipment(request):
         dict_array[1]['address_id'] = int(1000000000*random())
         form1 = ShipmentForm(dict_array[1])
         form2 = ShipmentForm(dict_array[0])
-        print(form1.is_valid())
         if form1.is_valid():
             shipment_form = form1.save(commit=False)
             for element in Shipment.objects.filter(user=request.user):
