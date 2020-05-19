@@ -322,11 +322,11 @@
     border-radius: 3px;">
 
     <h2>Cart <span class="price" style="color:#4a4d07;"><i class="fa fa-shopping-cart"></i></span></h2>
-    <p>Subtotal <span class="price">${{ subtotal }}</span></p>
-    <p>Discount<span class="price">${{ discount }}</span></p>
+    <p>Subtotal <span class="price">${{ subtotal|floatformat:2 }}</span></p>
+    <p>Discount<span class="price">${{ discount|floatformat:2 }}</span></p>
     <p>Shipping<span class="price">$0.0</span></p>
     <hr>
-    <p>Total <span class="price" style="color:black"><b>${{ total }}</b></span></p>
+    <p>Total <span class="price" style="color:black"><b>${{ total|floatformat:2 }}</b></span></p>
     <button id="pay" class="button button1">PAY</button>
 
       </form>
