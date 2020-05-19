@@ -1,3 +1,4 @@
+
 from user.models import User
 from typing import Union
 from django.db import models
@@ -9,11 +10,14 @@ from django.utils.translation import ugettext_lazy as _
 # Create your models here.
 
 class Shipment(models.Model):
+    address_id = models.BigIntegerField(verbose_name='address_id', primary_key=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    selection = models.IntegerField(verbose_name='selection_number', default=0)
+    address_name = models.CharField(verbose_name='address_name', max_length=60, default='')
     name = models.CharField(verbose_name='name', max_length=60, default='')
     surname = models.CharField(verbose_name='surname', max_length=60, default='')
-    email = models.EmailField(verbose_name='email', max_length=60, unique=True)
-    phone = models.CharField(verbose_name='phone', max_length=60, unique=True)
-    #city = models.CharField(verbose_name='city', max_length=60, default='')
+    email = models.EmailField(verbose_name='email', max_length=60)
+    phone = models.CharField(verbose_name='phone', max_length=60)
 
     city = models.CharField(
         verbose_name='city',
@@ -105,10 +109,10 @@ class Shipment(models.Model):
     district = models.CharField(verbose_name='district', max_length=60, default='')
     neighborhood = models.CharField(verbose_name='neighborhood', max_length=60, default='')
     others = models.CharField(verbose_name='others', max_length=100, default='')
-
-    REQUIRED_FIELDS = ['phone', 'name', 'surname', 'district', 'city','email']
-    field_order = {"name", "surname", "email", "phone", "city", "district", "neighborhood", "others", }
-
+    extra = models.CharField(verbose_name='extra', max_length=100, default='')
+    REQUIRED_FIELDS = ['phone', 'name', 'surname', 'district', 'city', 'email']
+    field_order = {"address_id", "name", "surname", "email", "phone",
+                   "city", "district", "neighborhood", "others", "extra"}
 
     class Meta:
         verbose_name = _("shipment")
@@ -116,3 +120,5 @@ class Shipment(models.Model):
 
     def __str__(self) -> str:
         return self.name
+
+
