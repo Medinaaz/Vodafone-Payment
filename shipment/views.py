@@ -1,14 +1,9 @@
-from django.http import Http404
-from django.utils.translation import ugettext_lazy as _
-from django.views.generic import TemplateView, View
-from django.shortcuts import render
+from payment.views import PaymentView
+
+from django.shortcuts import render, redirect
 from shipment.models import Shipment
-from product.models import Product, StatusChoices
-from django.http import JsonResponse
-from django import forms
 from shipment.forms import ShipmentForm
 from random import random
-import requests
 
 
 def split_dict(main_dict):
@@ -110,5 +105,6 @@ def save_shipment(request):
             main_dict["shipment_form" + str(ctr)] = form_element
             ctr += 1
         form = ShipmentForm()
+    response = redirect('/payment')
 
-    requests.get('/payment')
+    return response
