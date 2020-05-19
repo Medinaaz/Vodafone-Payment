@@ -62,7 +62,7 @@
                         <div class="col-3 text-center">
                             {% thumbnail product.main_image.image "350x350" crop="center" as im %}
                             <a href="{{ product.main_image.image.url }}" data-lightbox="roadtrip" data-title="{{ image.title }}">
-                                <img src={{im.url}} style="margin-top: 2%; margin-bottom: 2%; margin-left: 2%" alt="{{ image.title }}" />
+                                <img src="{{ im.url }}" style="margin-top: 2%; margin-bottom: 2%; margin-left: 2%" alt="{{ image.title }}" />
                             </a>
                             {% endthumbnail %}
 
