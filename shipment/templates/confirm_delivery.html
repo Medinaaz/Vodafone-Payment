@@ -13,7 +13,7 @@ color:rgb(74,77,78);
 </style>
 
 <div class="container" style="text-align:center;margin-top:50px;">
-    <form method="POST" action="/en/shipment/save/" class="save-shipment">{% csrf_token %}
+    <form method="POST" action="{% url "save_shipment" %}" class="save-shipment">{% csrf_token %}
     <div class="block-heading">
         <h2 style="color:#e60000">Confirm Address</h2>
     </div>
@@ -49,8 +49,8 @@ color:rgb(74,77,78);
 
         <div style="margin-left:40%;text-align: center;">
             <button type="submit" class="btn btn-primary btn-block btn-lg" style="border: 0px;background-color:green;display: inline-block;width:auto;margin-top:25px;" >Confirm</button>
-        <button type="submit" class="btn btn-primary btn-block btn-lg" style="border: 0px;background-color:#e60000;display: inline-block;width:auto;margin-top:25px;" formaction="/en/shipment/">Back</button>
-        </div><br>
+        <button type="submit" class="btn btn-primary btn-block btn-lg" style="border: 0px;background-color:#e60000;display: inline-block;width:auto;margin-top:25px;" formaction="{% url "add_shipment" %}">Back</button>
+        </div><br/>
         {{bill_form.address_name}}
         {{bill_form.name}}
         {{bill_form.surname}}

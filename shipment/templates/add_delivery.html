@@ -19,7 +19,7 @@ color:#e60000;
     </style>
 <div class="container" style="text-align:center;width:50%;margin-top:25px">
 
-<form method="POST" action="/en/shipment/confirm/" class="confirm-shipment">{% csrf_token %}
+<form method="POST" action="{% url "confirm_shipment" %}" class="confirm-shipment">{% csrf_token %}
   <div class="row">
     <div class="col-md-6">
         <label ><h3  >Shipment Address</h3></label>

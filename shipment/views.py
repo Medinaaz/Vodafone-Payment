@@ -39,7 +39,6 @@ def add_shipment(request):
     for element in Shipment.objects.filter(user=request.user):
         element.selection = 0
         element.save()
-
     for element in Shipment.objects.filter(user=request.user).values():
         form_element = ShipmentForm(element)
         shipment_list += [form_element]
@@ -103,6 +102,7 @@ def save_shipment(request):
             main_dict["shipment_form" + str(ctr)] = form_element
             ctr += 1
         form = ShipmentForm()
+
     response = redirect('/payment')
 
     return response
