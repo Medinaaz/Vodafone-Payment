@@ -244,9 +244,8 @@
                   <input type="text" id="email" name="email" placeholder="something@example.com">
                   <div style="color:grey"><i class="fa fa-address-card-o"></i> Address</div>
                   <address id="def_add">
-                    {{ neighborhood }}<br>
-                    {{ district }}<br>
-                    {{ city }}<br>
+                    {{others}} {{ neighborhood }}<br>
+                    {{ district }}/{{ city }}<br>
                   </address>
                   <button onclick="window.location.href = '/tr/shipment/'" class="button button1" id="button2" type="button">Change the Address</button>
 
@@ -265,10 +264,10 @@
                 <h3 id="pay_">Payment</h3>
                 <label for="fname" id="accepted_cards">Accepted Cards</label>
                 <div class="icon-container" id="label_container">
-                    <i class="fa fa-cc-visa" style="color:#e60000;"></i>
-                    <i class="fa fa-cc-amex" style="color:#e60000;"></i>
-                    <i class="fa fa-cc-mastercard" style="color:#e60000;"></i>
-                    <i class="fa fa-cc-discover" style="color:#e60000;"></i>
+                  <i class="fab fa-cc-visa" style="color:#e60000;"></i>
+                  <i class="fab fa-cc-amex" style="color:#e60000;"></i>
+                  <i class="fab fa-cc-mastercard" style="color:#e60000;"></i>
+                  <i class="fab fa-cc-discover" style="color:#e60000;"></i>
                 </div>
                 <label for="cname" id="name_on_card">Name on Card</label>
                 <input type="text" id="cname" name="cardname" placeholder="Name Surname" autocomplete="off" required>
@@ -322,11 +321,11 @@
     border-radius: 3px;">
 
     <h2>Cart <span class="price" style="color:#4a4d07;"><i class="fa fa-shopping-cart"></i></span></h2>
-    <p>Subtotal <span class="price">${{ subtotal|floatformat:2 }}</span></p>
-    <p>Discount<span class="price">${{ discount|floatformat:2 }}</span></p>
-    <p>Shipping<span class="price">$0.0</span></p>
+    <p>Subtotal <span class="price">₺{{ subtotal|floatformat:2 }}</span></p>
+    <p>Discount<span class="price">₺{{ discount|floatformat:2 }}</span></p>
+    <p>Shipping<span class="price">₺0.0</span></p>
     <hr>
-    <p>Total <span class="price" style="color:black"><b>${{ total|floatformat:2 }}</b></span></p>
+    <p>Total <span class="price" style="color:black"><b>₺{{ total|floatformat:2 }}</b></span></p>
     <button id="pay" class="button button1">PAY</button>
 
       </form>
@@ -388,6 +387,9 @@
           modal.style.display = "none";
       }
   }
+  setInputFilter(document.getElementById("credit_card_number"), value => {
+      return /^\d*$/.test(value); // Allow digits and '.' only, using a RegExp
+  });
   </script>
   <script>
   $(document).ready(function () {
@@ -411,9 +413,6 @@
       var $cvv = $('#cvv');
       var $cvv_num = $('#cvv_num');
       var $pay_ = $('#pay_');
-      setInputFilter(document.getElementById("credit_card_number"), value => {
-          return /^\d*$/.test(value); // Allow digits and '.' only, using a RegExp
-      });
       $button_credit_card.click(function (){
         $label_container.show();
         $accepted_cards.show();
