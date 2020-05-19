@@ -40,6 +40,9 @@ color:#e60000;
         <div >{{address_form.others}}</div>
         <div >{{address_form.extra}}</div>
 
+        <div >
+            <button class="btn btn-primary btn-block btn-lg" style="border:0;background-color:#747778;margin:auto;width:60%;margin-top:25px;" type="button"  nclick="myFunction()">Same Billing Address</button>
+        </div>
     </div>
     <div class="col-md-6">
         <label ><h3  >Billing Address</h3></label>
@@ -178,6 +181,24 @@ color:#e60000;
 
 
 
+</script>
+
+<script>
+function myFunction() {
+
+    document.getElementsByName("address_name")[1].value = document.getElementsByName("address_name")[0].value;
+    document.getElementsByName("name")[1].value = document.getElementsByName("name")[0].value ;
+    document.getElementsByName("surname")[1].value = document.getElementsByName("surname")[0].value;
+    document.getElementsByName("email")[1].value = document.getElementsByName("email")[0].value ;
+    document.getElementsByName("phone")[1].value = document.getElementsByName("phone")[0].value ;
+    document.getElementsByName("city")[1].value = document.getElementsByName("city")[0].value ;
+    document.getElementsByName("district")[1].value = document.getElementsByName("district")[0].value ;
+    document.getElementsByName("neighborhood")[1].value = document.getElementsByName("neighborhood")[0].value ;
+    document.getElementsByName("others")[1].value = document.getElementsByName("others")[0].value ;
+    document.getElementsByName("extra")[1].value = document.getElementsByName("extra")[0].value ;
+
+
+}
 </script>
 
 {% endblock %}
