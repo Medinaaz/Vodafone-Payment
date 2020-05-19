@@ -3,13 +3,14 @@
     --secondary-color: rgb(74, 77, 78);
 }
 
-.text-info, .summary > h4:last-of-type, a {
+.primary-color {
     color: var(--primary-color) !important;
 }
 
-.summary h4:first-of-type {
-    border-top: 1px solid var(--secondary-color) !important;
+.secondary-color {
+    color: var(--secondary-color) !important;
 }
+
 
 .btn-primary {
     background-color: var(--primary-color) !important;
@@ -22,4 +23,8 @@
 
 .btn-secondary, .summary > h3 {
     color: white !important;
+}
+
+.summary h4:first-of-type {
+    border-top: none !important;
 }
