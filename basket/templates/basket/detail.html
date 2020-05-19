@@ -4,6 +4,10 @@
 
 {% block title %}{% trans "Shopping Cart" %}{% endblock %}
 
+{% block extraHead %}
+    <link rel="stylesheet" href="{% static "css/custom.css" %}">
+{% endblock %}
+
 {% block content %}
     <main class="shopping-cart-page">
         <section class="clean-block clean-cart dark">
@@ -37,17 +41,25 @@
                                                     {% endfor %}
                                                 </div>
                                             </div>
-                                            <div class="col-6 col-md-2 quantity">
+                                            <div class="col-6 col-md-1 quantity">
                                                 <label for="quantity-{{ basket_item.id }}" class="d-none d-md-block">{% trans "Quantity" %}</label>
                                                 <input type="number" id="quantity-{{ basket_item.id }}" class="form-control quantity-input" value="{{ basket_item.quantity }}" data-basket-item-id="{{ basket_item.id }}">
                                             </div>
-                                            <div class="col-6 col-md-2 price">
+                                            <div class="col-6 col-md-3 price">
                                                 <span>{{ basket_item.total_price|floatformat:"2" }} ₺</span>
                                             </div>
                                         </div>
                                     </div>
                                 {% endfor %}
-                                {% if not basket_items %}
+                                {% if basket_items %}
+                                    <div class="float-right" style="margin: 50px 0;">
+                                        <button type="submit" class="basket-delete btn btn-toolbar">
+                                            <i class="fa fa-trash">
+                                                {% trans "Trash the cart" %}
+                                            </i>
+                                        </button>
+                                    </div>
+                                {% else %}
                                     <h2>{% trans "Shopping cart is empty." %}</h2>
                                     <h4><a href="/">{% trans "Browse products to add" %}</a></h4>
                                 {% endif %}
@@ -74,7 +86,7 @@
                                 </h4>
                                 <h4>
                                     <label for="input-coupon-code" class="text">{% trans "Coupon" %}</label>
-                                    <input id="input-coupon-code" class="input-group-text price" value="{{ basket.coupon_code|default:"" }}">
+                                    <input id="input-coupon-code" class="input-group-text price" style="width: 140px; position: relative; top: -12px;" value="{{ basket.coupon_code|default:"" }}">
                                     <button
                                             class="btn btn-secondary btn-block apply-coupon-code"
                                             style="font-size: 14px; margin-top: 20px;"
