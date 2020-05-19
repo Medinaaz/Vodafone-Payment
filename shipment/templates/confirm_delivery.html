@@ -25,7 +25,7 @@ color:rgb(74,77,78);
         <label class="font-weight-bold"> Surname:</label> {{form.surname.value}}<br/>
         <label class="font-weight-bold"> Email:</label> {{form.email.value}}<br/>
         <label class="font-weight-bold"> Phone Number:</label> {{form.phone.value}}<br/>
-        <label class="font-weight-bold"> City:</label> {{form|selected_choice:"city"}}<br/>
+        <label class="font-weight-bold"> City:</label> {{ form|selected_choice:"city" }}<br/>
         <label class="font-weight-bold"> Neighborhood:</label> {{form.neighborhood.value}}<br/>
         <label class="font-weight-bold"> District:</label> {{form.district.value}}<br/>
         <label class="font-weight-bold"> Others:</label> {{form.others.value}}<br/>
@@ -38,7 +38,7 @@ color:rgb(74,77,78);
         <label class="font-weight-bold"> Surname:</label> {{bill_form.surname.value}}<br/>
         <label class="font-weight-bold"> Email:</label> {{bill_form.email.value}}<br/>
         <label class="font-weight-bold"> Phone Number:</label> {{bill_form.phone.value}}<br/>
-        <label class="font-weight-bold"> City:</label> {{bill_form.city.value}}<br/>
+        <label class="font-weight-bold"> City:</label> {{ bill_form|selected_choice:"city" }}<br/>
         <label class="font-weight-bold"> Neighborhood:</label> {{bill_form.neighborhood.value}}<br/>
         <label class="font-weight-bold"> District:</label> {{bill_form.district.value}}<br/>
         <label class="font-weight-bold"> Others:</label> {{bill_form.others.value}}<br/>
