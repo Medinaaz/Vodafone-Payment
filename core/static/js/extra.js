@@ -90,4 +90,18 @@ $(document).ready(function () {
             }
         });
     });
+    $('.basket-delete').click(function (e) {
+        let me = $(this);
+        $.ajax({
+            url: basketApiUrl,
+            type: "DELETE",
+            success: function (data) {
+                window.location.reload();
+            },
+            error: function (xhr) {
+                let data = jQuery.parseJSON(xhr.responseText);
+                me.text(data.message);
+            }
+        });
+    });
 })

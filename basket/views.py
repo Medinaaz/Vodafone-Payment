@@ -158,3 +158,17 @@ class BasketManagementAjaxView(View):
             safe=False,
             status=200,
         )
+
+    def delete(self, request, **kwargs):
+        """Delete basket and related basket items"""
+        self.basket = Basket.current_basket(user=request.user)
+        self.basket.delete()
+
+        return JsonResponse(
+            data={
+                "code": "success",
+                "message": _("Basket deleted"),
+            },
+            safe=False,
+            status=200,
+        )
