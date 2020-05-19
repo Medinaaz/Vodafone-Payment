@@ -21,7 +21,7 @@ form.example button {
     float: left;
     width: 10%;
     padding: 10px;
-    background: red;
+    background: #E60000;
     color: white;
     font-size: 17px;
     border: 1px solid grey;
@@ -30,13 +30,38 @@ form.example button {
 }
 
 form.example button:hover {
-    background: #0b7dda;
+    color: #E60000;
+    background-color: white;
+    transition-duration: 0.2s;
+}
+
+.vodafone-red-text {
+    color: #E60000;
+}
+
+.vodafone-grey-text {
+    color: #4A4D4E;
+}
+
+.vodafone-red-back {
+    background: #E60000;
+}
+
+.vodafone-grey-back {
+    background: #4A4D4E;
 }
 
 form.example::after {
     content: "";
     clear: both;
     display: table;
+}
+
+.btn-lg.text-center.text-white.vodafone-red-back:hover {
+    background-color: white;
+    color: #E60000 !important;
+    border-color: #E60000 !important;
+    transition-duration: 0.2s;
 }
 
 .card-carousel {
@@ -154,7 +179,7 @@ form.example::after {
     position: relative;
     float: left;
     overflow: hidden;
-    background-color: fff;
+    background-color: #e60000;
     flex-direction: column;
     height: auto;
     box-shadow: 4px 0 10px 0 rgba(0, 0, 0, .4);
@@ -163,7 +188,7 @@ form.example::after {
 
 .Category-item {
     font-weight: 500;
-    color: #969397;
+    color: #fff;
     text-transform: uppercase;
 }
 
@@ -189,19 +214,20 @@ ul.Category {
 
 .section-header {
     margin-bottom: 10px!important;
+    color: white;
 }
 
 .section-header-name {
     margin-left: 15px;
     line-height: 15px!important;
-    font-size: 13px!important;
+    font-size: 18px!important;
     font-weight: 700!important;
 }
 
 .section-list {
     list-style: none;
     margin-bottom: 18px!important;
-    color: #111;
+    color: #fff;
 }
 
 .price-range {
@@ -228,4 +254,36 @@ ul.Category {
 
 .section-name {
     float: inline-end;
+}
+
+.btn-submit {
+    background-color: #fff;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border: 2px solid #f44336;
+    width: 100%;
+    color: black;
+    border: 2px solid #555555;
+}
+
+.btn-submit:hover {
+    background-color: #555555;
+    color: white;
+}
+
+.filter-button {
+    margin-top: 20px;
+    background-color: #e60000;
+    border: none;
+    cursor: pointer;
+    color: white;
+}
+
+.filter-button:hover {
+    background-color: #555555;
+    color: white;
 }
