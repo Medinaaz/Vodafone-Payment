@@ -36,13 +36,14 @@ class PaymentView(TemplateView):
         context['discount'] = total - subtotal
         shipment = Shipment.objects.filter(user=self.request.user).values()
         for element in shipment:
-            if element['selection']== 2 or element['selection']== 3:
-                context['name'] = element['name']
-                context['surname'] = element['surname']
-                context['email'] = element['email']
-                context['neighborhood'] = element['neighborhood']
-                context['district'] = element['district']
-                context['city'] = element['city']
+            if element.selection== 2 or element.selection== 3:
+                context['name'] = element.name
+                context['surname'] = element.surname
+                context['email'] = element.email
+                context['neighborhood'] = element.neighborhood
+                context['others'] = element.others
+                context['district'] = element.district
+                context['city'] = element.get_city_display()
 
         return context
 
