@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
     <link rel="stylesheet" href="{% static "fontawesome/css/all.min.css" %}">
     <link href="{% static "css/lightbox.min.css" %}" rel="stylesheet">
-    <link rel="stylesheet" href="{% static "css/extra.css" %}?v=2.1">
+    <link rel="stylesheet" href="{% static "css/extra.css" %}?v=2.2">
     
     {% block extraHead %}{% endblock %}
 </head>
@@ -25,7 +25,18 @@
         <div id="navcol-1" class="collapse navbar-collapse">
             <ul class="nav navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" {% if not user.is_registered %}href="#" data-toggle="modal" data-target="#signinModal"{% else %}href="#"{% endif %}><i class="fa fa-user nav-icon"></i></a>
+                    {% if not user.is_registered %}
+                        <a class="nav-link" href="#" data-toggle="modal" data-target="#signinModal"><i class="fa fa-user nav-icon"></i></a>
+                    {% else %}
+                        <a class="nav-link dropdown-toggle" href="#" id="user-dropdown-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-user nav-icon"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-md-center" aria-labelledby="user-dropdown-link">
+                            <a class="dropdown-item disabled" disabled="disabled" href="#">{% trans "Dashboard" %}</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{% url "logout" %}">{% trans "Logout" %}</a>
+                        </div>
+                    {% endif %}
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'basket' %}"><i class="fa fa-shopping-cart nav-icon"></i></a>
@@ -55,14 +66,16 @@
         </div>
         <div class="modal-body">
              <div class="content">
-                 <form class="form-signin">
+                 <form class="form-signin" id="login-form" data-url="{% url "login" %}" action="{% url "login" %}" method="post">
+                     {% csrf_token %}
                      <div class="error"></div>
+                     <span class="login-message"></span>
                      <div class="form loginBox" id="login-credentials">
                          <label for="inputEmail" class="sr-only">{% trans "Email address" %}</label>
-                         <input type="email" id="inputEmail" class="form-control" placeholder="{% trans "Email address" %}" required autofocus>
+                         <input type="email" id="inputEmail" class="form-control" name="email" placeholder="{% trans "Email address" %}" required autofocus>
                          <label for="inputPassword" class="sr-only">{% trans "Password" %}</label>
-                         <input type="password" id="inputPassword" class="form-control" placeholder="{% trans "Password" %}" required>
-                         <button class="btn btn-lg btn-primary btn-block" type="button" id="login-button">{% trans "Sign in" %}</button>
+                         <input type="password" id="inputPassword" class="form-control" name="password" placeholder="{% trans "Password" %}" required>
+                         <button class="btn btn-lg btn-danger btn-block" type="submit" id="login-button">{% trans "Sign in" %}</button>
                      </div>
                  </form>
              </div>
@@ -82,14 +95,22 @@
         </div>
         <div class="modal-body">
              <div class="content">
-                 <form class="form-signin">
+                 <form class="form-signin" id="registration-form" data-url="{% url "register" %}" action="{% url "register" %}" method="post">
+                     {% csrf_token %}
                      <div class="error"></div>
+                     <span class="registration-message"></span>
                      <div class="form registerBox" id="register-credentials">
                          <label for="inputEmail" class="sr-only">{% trans "Email address" %}</label>
-                         <input type="email" id="inputEmail" class="form-control" placeholder="{% trans "Email address" %}" required autofocus>
+                         <input type="email" id="inputEmail" class="form-control" name="email" placeholder="{% trans "Email address" %}" required autofocus>
                          <label for="inputPassword" class="sr-only">{% trans "Password" %}</label>
-                         <input type="password" id="inputPassword" class="form-control" placeholder="{% trans "Password" %}" required>
-                         <button class="btn btn-lg btn-primary btn-block" type="button" id="login-button">{% trans "Register" %}</button>
+                         <input type="password" id="inputPassword" class="form-control" name="password" placeholder="{% trans "Password" %}" required>
+                         <label for="inputFirstName" class="sr-only">{% trans "First name" %}</label>
+                         <input type="text" id="inputFirstName" class="form-control" name="first_name" placeholder="{% trans "First name" %}">
+                         <label for="inputLastName" class="sr-only">{% trans "Last name" %}</label>
+                         <input type="text" id="inputLastName" class="form-control" name="last_name" placeholder="{% trans "Last name" %}">
+                         <label for="inputUsername" class="sr-only">{% trans "Username" %}</label>
+                         <input type="text" id="inputUsername" class="form-control" name="username" placeholder="{% trans "Username" %}">
+                         <button class="btn btn-lg btn-danger btn-block" type="submit" id="register-button">{% trans "Register" %}</button>
                      </div>
                  </form>
              </div>
@@ -135,7 +156,7 @@
         "added_to_basket": "{% trans "Added to basket" %}"
     }
 </script>
-<script type="text/javascript" src="{% static "js/extra.js" %}?v=2"></script>
+<script type="text/javascript" src="{% static "js/extra.js" %}?v=2.2"></script>
 {% block extraJS %}{% endblock %}
 </body>
 </html>

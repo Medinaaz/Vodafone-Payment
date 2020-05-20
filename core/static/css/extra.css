@@ -58,3 +58,10 @@ a.nav-link {
 a.nav-link:hover {
     color: #c82333;
 }
+.nav-link.dropdown-toggle::after {
+    display: none;
+}
+.dropdown-menu-md-center {
+    right: auto;
+    left: auto;
+}

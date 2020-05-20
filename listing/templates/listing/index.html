@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="{% static 'listing/index-style.css' %}">{% endblock %} {% block content %}
 <div  style="margin-bottom: 60px; margin-top: 60px;" class="page-header">
     <form class="example" action="{% url 'listing:search' %}">
-        <input type="text" placeholder="Ara..." name="searchText">
+        <input type="text" placeholder="{% trans "Search..." %}" name="searchText">
         <button type="submit">
             <i class="fa fa-search"></i>
         </button>
@@ -28,7 +28,7 @@
         <div class="card-body">
             <h5 style="font-size: small;" class="card-title vodafone-red-text text-center">{{product.name}}</h5>
             <h5 style="font-size: large;" class="card-title vodafone-grey-text text-center">₺ {{product.price}}</h5>
-            <a style="margin-top: 2%;" method="get"  href="/product/{{ product.slug}}/"  class="btn2 btn-lg text-center text-white vodafone-red-back">İncele</a>
+            <a style="margin-top: 2%;" method="get"  href="/product/{{ product.slug}}/"  class="btn2 btn-lg text-center text-white vodafone-red-back">{% trans "Details" %}</a>
         </div>
     </div>
     {% endfor %}

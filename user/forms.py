@@ -1,6 +1,7 @@
 from django.utils.translation import ugettext_lazy as _
 from django import forms
 from django.core.exceptions import ValidationError
+from django.contrib.auth.hashers import check_password
 from django.core.validators import validate_slug
 from django.contrib.auth.forms import UserCreationForm as BaseUserCreationForm, UsernameField
 from user.models import User
@@ -26,6 +27,24 @@ class LoginForm(forms.Form):
             'class': 'form-control'
         })
     )
+    next_url = forms.CharField(max_length=254, widget=forms.HiddenInput(), required=False)
+
+    def __init__(self, *args, **kwargs):
+        try:
+            self.next_url_kw = kwargs.pop('next_url')
+        except KeyError:
+            self.next_url_kw = ''
+        super().__init__(*args, **kwargs)
+        self.fields['next_url'].initial = self.next_url_kw
+
+    def clean(self):
+        email = self.cleaned_data.get("email")
+        password = self.cleaned_data.get("password")
+        user = User.objects.filter(email=email).first()
+        if not user:
+            self.add_error("email", _("User with that email address is not registered!"))
+        elif not check_password(password, user.password):
+            self.add_error("password", _("Incorrect password"))
 
 
 class RegistrationForm(forms.ModelForm, LoginForm):

@@ -12,6 +12,7 @@ from shipment.models import Shipment
 
 # Create your views here.
 
+
 class PaymentView(TemplateView):
     template_name = "payment/detail.html"
 

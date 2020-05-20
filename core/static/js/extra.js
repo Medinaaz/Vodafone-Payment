@@ -26,8 +26,63 @@ $.ajaxSetup({
     }
 });
 $(document).ready(function () {
-    let basketApiUrl = $(".main-marketplace-navigation").data("basket-api");
+    $("#login-form").submit(function (e) {
+        e.preventDefault();
+        let login_btn = $('#login-button');
+        login_btn.addClass('disabled');
+        let url = $(this).data('url');
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: {
+                    email: $(this).find('input[name="email"]').val(),
+                    password: $(this).find('input[name="password"]').val()
+                },
+            success: function (data) {
+                let message_box = $('.login-message');
+                message_box.text(data.message);
+                window.location.reload();
+            },
+            error: function (xhr) {
+                let data = jQuery.parseJSON(xhr.responseText);
+                let message_box = $('.login-message');
+                message_box.text(data.message);
+            }
+        });
+        login_btn.removeClass('disabled')
+        return false;
+    });
+    $("#registration-form").submit(function (e) {
+        e.preventDefault();
+        let registration_btn = $('#register-button');
+        registration_btn.addClass('disabled');
+        let url = $(this).data('url');
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: {
+                    email: $(this).find('input[name="email"]').val(),
+                    password: $(this).find('input[name="password"]').val(),
+                    first_name: $(this).find('input[name="first_name"]').val(),
+                    last_name: $(this).find('input[name="last_name"]').val(),
+                    username: $(this).find('input[name="username"]').val(),
+                },
+            success: function (data) {
+                let message_box = $('.registration-message');
+                message_box.text(data.message);
+                window.location.reload();
+            },
+            error: function (xhr) {
+                let data = jQuery.parseJSON(xhr.responseText);
+                let message_box = $('.registration-message');
+                message_box.html(data.message);
+            }
+        });
+        registration_btn.removeClass('disabled')
+        return false;
+    });
 
+    let basketApiUrl = $(".main-marketplace-navigation").data("basket-api");
     $(".add-basket-item").on("click", function (e) {
         e.preventDefault();
         let me = $(this);
