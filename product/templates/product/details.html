@@ -68,7 +68,7 @@
         </table>
     </div>
     <div class="clean-block"></div>
-    <div>
+    <div class="row">
         {% for similar_product in similar_products %}
             <div class="col-md-3">
                 <a href="{% url "product_details" slug=similar_product.slug %}" class="similar_product_item">
