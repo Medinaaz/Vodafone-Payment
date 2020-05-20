@@ -55,6 +55,7 @@
 </div>
 {% endblock %}
 <!-- navigation bar ends -->
+{% block loginRegModals %}
 <!-- User related models -->
 {% if not user.is_registered %}
 <div class="modal fade login" id="signinModal" tabindex="-1" role="dialog" aria-labelledby="singinModalLabel" aria-hidden="true">
@@ -122,6 +123,7 @@
   </div>
 </div>
 {% endif %}
+{% endblock %}
 {% block content %}{% endblock %}
 
 <!-- footer starts -->

@@ -11,4 +11,3 @@ class ShipmentForm(forms.ModelForm):
         model = Shipment
         fields = ["address_id", "address_name", "name", "surname", "email", "phone",
                   "city", "district", "neighborhood", "others", "extra"]
-
