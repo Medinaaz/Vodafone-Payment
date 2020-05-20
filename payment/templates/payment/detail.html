@@ -1,7 +1,7 @@
 {% extends "base.html" %}
-{% load static %}
+{% load static i18n %}
 
-{% block title %}Payment{% endblock %}
+{% block title %}{% trans "Payment" %}{% endblock %}
 {% block content %}
 
 <head>
@@ -237,44 +237,44 @@
               <div class="col-50">
               <form action="{% url 'payment:confirm_payment' %}" method="POST">
                       {% csrf_token %}
-                  <h2>Billing Address</h2>
-                  <label for="fname"><i class="fa fa-user"></i> Full Name</label>
-                  <input type="text" id="fname" name="firstname" placeholder="Name Surname">
-                  <label for="email"><i class="fa fa-envelope"></i> Email</label>
+                  <h2>{% trans "Billing Address" %}</h2>
+                  <label for="fname"><i class="fa fa-user"></i> {% trans "Full Name" %}</label>
+                  <input type="text" id="fname" name="firstname" placeholder="{% trans "First and last name" %}">
+                  <label for="email"><i class="fa fa-envelope"></i> {% trans "Email" %}</label>
                   <input type="text" id="email" name="email" placeholder="something@example.com">
-                  <div style="color:grey"><i class="fa fa-address-card-o"></i> Address</div>
+                  <div style="color:grey"><i class="fa fa-address-card-o"></i> {% trans "Address" %}</div>
                   <address id="def_add">
                     {{others}} {{ neighborhood }}<br>
                     {{ district }}/{{ city }}<br>
                   </address>
-                  <button onclick="window.location.href = '/tr/shipment/'" class="button button1" id="button2" type="button">Change the Address</button>
+                  <button onclick="window.location.href = '{% url "add_shipment" %}'" class="button button1" id="button2" type="button">{% trans "Change the Address" %}</button>
 
                   <br>
                   <br>
-                  <div style="color:#4a4d07"><i class="fa fa-money"></i> Payment Menu</div>
+                  <div style="color:#4a4d07"><i class="fa fa-money"></i> {% trans "Payment Menu" %}</div>
                   <br><br>
                   <div class="btn-group">
-                      <button class = "button button_credit_card" id="button_credit_card">Credit Card</button>
-                      <button class = "button button_cash" id = "button_cash">Pay on Delivery</button>
+                      <button class = "button button_credit_card" id="button_credit_card">{% trans "Credit Card" %}</button>
+                      <button class = "button button_cash" id = "button_cash">{% trans "Pay on Delivery" %}</button>
                   </div>
 
               </div>
 
               <div class="col-50">
-                <h3 id="pay_">Payment</h3>
-                <label for="fname" id="accepted_cards">Accepted Cards</label>
+                <h3 id="pay_">{% trans "Payment" %}</h3>
+                <label for="fname" id="accepted_cards">{% trans "Accepted Cards" %}</label>
                 <div class="icon-container" id="label_container">
                   <i class="fab fa-cc-visa" style="color:#e60000;"></i>
                   <i class="fab fa-cc-amex" style="color:#e60000;"></i>
                   <i class="fab fa-cc-mastercard" style="color:#e60000;"></i>
                   <i class="fab fa-cc-discover" style="color:#e60000;"></i>
                 </div>
-                <label for="cname" id="name_on_card">Name on Card</label>
-                <input type="text" id="cname" name="cardname" placeholder="Name Surname" autocomplete="off" required>
-                <label for="ccnum" id="credit_card_number">Credit card number</label>
+                <label for="cname" id="name_on_card">{% trans "Name on Card" %}</label>
+                <input type="text" id="cname" name="cardname" placeholder="{% trans "First and last name" %}" autocomplete="off" required>
+                <label for="ccnum" id="credit_card_number">{% trans "Credit card number" %}</label>
                 <input type="text" id="ccnum" name="cardnumber" placeholder="XXXX-XXXX-XXXX-XXXX" autocomplete="off" onKeyUp="validate(event)" required >
                 <div class="col-30">
-                    <label for="expmonth" id="expiry_m">Expiry Month</label>
+                    <label for="expmonth" id="expiry_m">{% trans "Expiry Month" %}</label>
                     <select name="month" id="expmonth" placeholder="Month">
                           <option value="1">01</option>
                           <option value="2">02</option>
@@ -292,7 +292,7 @@
                   </div>
                   <br/>
                   <div class="col-30">
-                    <label for="selectYear" id="expiry_y">Expiry Year</label>
+                    <label for="selectYear" id="expiry_y">{% trans "Expiry Year" %}</label>
                     <select id="selectYear" name="year" placeholder="Year" >
                           <option value="1">01</option>
 
@@ -326,7 +326,7 @@
     <p>Shipping<span class="price">₺0.0</span></p>
     <hr>
     <p>Total <span class="price" style="color:black"><b>₺{{ total|floatformat:2 }}</b></span></p>
-    <button id="pay" class="button button1">PAY</button>
+    <button id="pay" class="button button1">{% trans "PAY" %}</button>
 
       </form>
       </div>
