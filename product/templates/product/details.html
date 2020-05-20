@@ -53,7 +53,7 @@
     </div>
     <div class="clean-block"></div>
     <div>
-        <div class="h3 my-auto">{% trans "Additional details" %}</div>
+        <div class="h3 my-auto">{% trans "Additional details" %}</div><hr/>
         <table class="table table-bordered">
             <tbody>
             {% for property in additional_properties %}
@@ -68,6 +68,8 @@
         </table>
     </div>
     <div class="clean-block"></div>
+    {% if similar_products %}
+    <div class="h3 my-auto">{% trans "Similar products" %}</div><hr/>
     <div class="row">
         {% for similar_product in similar_products %}
             <div class="col-md-3">
@@ -104,6 +106,7 @@
         {% endfor %}
     </div>
     <div class="clean-block"></div>
+    {% endif %}
     <nav>
         <div class="nav nav-tabs" id="nav-tab" role="tablist">
           <a class="nav-item nav-link active text-dark" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">{% trans "Comments" %}</a>
