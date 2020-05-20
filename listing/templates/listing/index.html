@@ -28,7 +28,7 @@
         <div class="card-body">
             <h5 style="font-size: small;" class="card-title vodafone-red-text text-center">{{product.name}}</h5>
             <h5 style="font-size: large;" class="card-title vodafone-grey-text text-center">₺ {{product.price}}</h5>
-            <a style="margin-top: 2%;" method="get"  href="/product/{{ product.slug}}/"  class="btn2 btn-lg text-center text-white vodafone-red-back">{% trans "Details" %}</a>
+            <a style="margin-top: 2%;" method="get"  href="{% url "product_details" slug=product.slug %}" class="btn2 btn-lg text-center text-white vodafone-red-back">{% trans "Details" %}</a>
         </div>
     </div>
     {% endfor %}
