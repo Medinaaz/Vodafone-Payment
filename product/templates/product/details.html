@@ -74,43 +74,61 @@
         {% if similar_products %}
             <div class="h3 my-auto">{% trans "Similar products" %}</div>
             <hr/>
-            <div class="row">
+            <div class="card-group">
                 {% for similar_product in similar_products %}
-                    <div class="col-md-3 card-group">
+                    <div class="card">
                         <a href="{% url "product_details" slug=similar_product.slug %}" class="similar_product_item">
-                            <div class="card">
-                                {% thumbnail similar_product.main_image.image "350x350" crop="center" as im %}
-                                    <img class="bd-placeholder-img card-img-top" src="{{ im.url }}"
-                                         alt="{{ similar_product.main_image.title }}">
-                                {% endthumbnail %}
-                                <div class="card-body">
-                                    <h5 class="card-title">{{ similar_product.name }}</h5>
-                                    <p class="card-text">
-                                    <p class="mb-1 font-weight-bold">{{ product.price|floatformat:2 }} <i
-                                            class="fas fa-lira-sign"></i></p>
-                                    <ul>
-                                        {% for property in similar_product.properties.all %}
-                                            {% if property.is_main_property %}
-                                                <li>
-                                                    {{ property.option.name }}:
-                                                    {% if property.value == "check" %}
-                                                        <i class="fa fa-check-circle green-text"></i>
-                                                    {% elif property.value == "no-check" %}
-                                                        <i class="fa fa-times-circle red-text"></i>
-                                                    {% else %}
-                                                        {{ property.value }}
-                                                    {% endif %}
-                                                </li>
-                                            {% endif %}
-                                        {% endfor %}
-                                    </ul>
-                                    </p>
-                                </div>
-                                <div class="card-footer">
-                                    <small class="text-muted">Last updated 3 mins ago</small>
-                                </div>
-                            </div>
+                            {% thumbnail similar_product.main_image.image "350x350" crop="center" as im %}
+                            <img src="{{ im.url }}" class="card-img-top" alt="{{ similar_product.main_image.title }}">
                         </a>
+                        <div class="card-body">
+                            <h5 class="card-title">{{ similar_product.name }}</h5>
+                            <p class="card-text">
+                            <span class="mb-1 font-weight-bold">{{ product.price|floatformat:2 }} <i class="fas fa-lira-sign"></i></span>
+                            <ul>
+                                {% for property in similar_product.properties.all %}
+                                    {% if property.is_main_property %}
+                                        <li>
+                                            {{ property.option.name }}:
+                                            {% if property.value == "check" %}
+                                                <i class="fa fa-check-circle green-text"></i>
+                                            {% elif property.value == "no-check" %}
+                                                <i class="fa fa-times-circle red-text"></i>
+                                            {% else %}
+                                                {{ property.value }}
+                                            {% endif %}
+                                        </li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">Last updated 3 mins ago</small>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="..." class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">This card has supporting text below as a natural lead-in to additional
+                                content.</p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">Last updated 3 mins ago</small>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="..." class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                                additional content. This card has even longer content than the first to show that equal
+                                height action.</p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">Last updated 3 mins ago</small>
+                        </div>
                     </div>
                 {% endfor %}
             </div>
