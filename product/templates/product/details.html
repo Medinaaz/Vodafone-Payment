@@ -80,6 +80,7 @@
                         <a href="{% url "product_details" slug=similar_product.slug %}" class="similar_product_item">
                             {% thumbnail similar_product.main_image.image "350x350" crop="center" as im %}
                             <img src="{{ im.url }}" class="card-img-top" alt="{{ similar_product.main_image.title }}">
+                            {% endthumbnail %}
                         </a>
                         <div class="card-body">
                             <h5 class="card-title">{{ similar_product.name }}</h5>
