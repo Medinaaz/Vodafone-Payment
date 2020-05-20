@@ -70,8 +70,12 @@
     <div class="clean-block"></div>
     <nav>
         <div class="nav nav-tabs" id="nav-tab" role="tablist">
-          <a class="nav-item nav-link active text-dark" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Comments</a>
-          <a class="nav-item nav-link text-dark" id="nav-profile-tab" data-toggle="tab" href="#nav-addComment" role="tab" aria-controls="nav-profile" aria-selected="false">Add Comment</a>
+          <a class="nav-item nav-link active text-dark" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">{% trans "Comments" %}</a>
+            {% if not user.is_registered %}
+            <a class="nav-link" href="#" data-toggle="modal" data-target="#signinModal">{% trans "Add Comment" %}</a>
+            {% else %}
+            <a class="nav-item nav-link text-dark" id="nav-profile-tab" data-toggle="tab" href="#nav-addComment" role="tab" aria-controls="nav-profile" aria-selected="false">{% trans "Add Comment" %}</a>
+            {% endif %}
         </div>
     </nav>
     <div class="tab-content" id="nav-tabContent">

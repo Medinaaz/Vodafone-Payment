@@ -22,9 +22,19 @@ class BasicCommandCreateView(CreateView):
         except Product.DoesNotExist:
             raise Http404(_("Product not found!"))
         self.object = form.save(commit=False)
-        self.object.author = self.request.user
-        self.object.product = product
-        self.object.save()
+        # check if user has a review
+        if not form.is_valid():
+            return super().form_valid()
+        comment = Comment.objects.filter(author=self.request.user, product=product).first()
+        if comment:
+            comment.rate = form.cleaned_data.get("rate", comment.rate)
+            comment.subject = form.cleaned_data.get("subject", comment.subject)
+            comment.message = form.cleaned_data.get("message", comment.message)
+            comment.save()
+        else:
+            self.object.author = self.request.user
+            self.object.product = product
+            self.object.save()
 
         return super().form_valid(form)
 
