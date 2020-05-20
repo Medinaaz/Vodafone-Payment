@@ -65,3 +65,9 @@ a.nav-link:hover {
     right: auto;
     left: auto;
 }
+.similar_product_item {
+    color: #212529;
+}
+.similar_product_item:hover {
+    color: #212529;
+}

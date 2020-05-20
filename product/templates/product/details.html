@@ -68,6 +68,42 @@
         </table>
     </div>
     <div class="clean-block"></div>
+    <div>
+        {% for similar_product in similar_products %}
+            <div class="col-md-3">
+                <a href="{% url "product_details" slug=similar_product.slug %}" class="similar_product_item">
+                <div class="card">
+                    {% thumbnail similar_product.main_image.image "350x350" crop="center" as im %}
+                  <img class="bd-placeholder-img card-img-top" src="{{ im.url }}" alt="{{ similar_product.main_image.title }}">
+                    {% endthumbnail %}
+                  <div class="card-body">
+                    <h5 class="card-title">{{ similar_product.name }}</h5>
+                    <p class="card-text">
+                        <p class="mb-1 font-weight-bold">{{ product.price|floatformat:2 }} <i class="fas fa-lira-sign"></i></p>
+                        <ul>
+                            {% for property in similar_product.properties.all %}
+                                {% if property.is_main_property %}
+                                    <li>
+                                        {{ property.option.name }}:
+                                        {% if property.value == "check" %}
+                                            <i class="fa fa-check-circle green-text"></i>
+                                        {% elif property.value == "no-check" %}
+                                            <i class="fa fa-times-circle red-text"></i>
+                                        {% else %}
+                                            {{ property.value }}
+                                        {% endif %}
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </p>
+                  </div>
+                </div>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="clean-block"></div>
     <nav>
         <div class="nav nav-tabs" id="nav-tab" role="tablist">
           <a class="nav-item nav-link active text-dark" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">{% trans "Comments" %}</a>

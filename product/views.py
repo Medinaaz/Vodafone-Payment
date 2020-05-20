@@ -4,7 +4,6 @@ from django.views.generic import TemplateView
 
 from comment.forms import CommentForm
 from product.models import Product, StatusChoices
-from user.forms import RegistrationForm, LoginForm
 
 
 class ProductDetailsView(TemplateView):
@@ -24,6 +23,7 @@ class ProductDetailsView(TemplateView):
         context["additional_properties"] = product.properties.all().select_related("option")
         context["comments"] = product.comments.filter(verified=True, message__isnull=False).exclude(message="")
         context["comment_form"] = CommentForm()
-        context["reg_form"] = RegistrationForm()
-        context["login_form"] = LoginForm()
+        context["similar_products"] = Product.objects.filter(
+            category=product.category
+        ).exclude(pk=product.pk).prefetch_related("properties")[:4]
         return context
