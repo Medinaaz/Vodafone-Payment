@@ -44,7 +44,7 @@
         <p> THANK YOU!</p>
         <img src="{% static "payment/icon.png" %}" height="120" width="120">
         <br>
-        <p style="font-size:22px;color: black;">{{ total }} ₺</p>
+        <p style="font-size:22px;color: black;">{{ total|floatformat:2 }} ₺</p>
         <p style="color: black">YOUR ORDER HAS BEEN CONFIRMED</p>
         <p style="font-size:15px;">A RECEIPT WAS SENT TO YOUR EMAIL </p>
     </div>
