@@ -239,9 +239,9 @@
                       {% csrf_token %}
                   <h2>{% trans "Billing Address" %}</h2>
                   <label for="fname"><i class="fa fa-user"></i> {% trans "Full Name" %}</label>
-                  <input type="text" id="fname" name="firstname" placeholder="{% trans "First and last name" %}">
+                  <input type="text" id="fname" name="firstname" placeholder="{% trans "First and last name" %}" value="{{ name }} {{ surname }}">
                   <label for="email"><i class="fa fa-envelope"></i> {% trans "Email" %}</label>
-                  <input type="text" id="email" name="email" placeholder="something@example.com">
+                  <input type="text" id="email" name="email" placeholder="something@example.com" value={{ email }}>
                   <div style="color:grey"><i class="fa fa-address-card-o"></i> {% trans "Address" %}</div>
                   <address id="def_add">
                     {{others}} {{ neighborhood }}<br>
